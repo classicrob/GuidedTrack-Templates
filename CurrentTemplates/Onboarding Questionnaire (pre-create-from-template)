@@ -1,0 +1,106 @@
+--{Onboarding Questionnaire}
+*settings
+	*back: yes
+	
+*header: Welcome to GuidedTrack
+We help non-coders and coders alike create interactive courses, apps, surveys, and experiments based on their own subject matter expertise.
+Right now you are seeing your first program made in GuidedTrack. You'll be able to build something just like this!
+
+*html
+	<style>
+		.multimedia_node img {
+			width: 160px;
+		}
+	</style>
+*image: https://www.guidedtrack.com/assets/gt-logo-vertical.png
+
+*button: Tell us about yourself
+
+*question: What role best describes you?
+	*save: userRole
+	Entrepreneur or online product creator
+	Business process creator or manager
+	Educator or trainer
+	Researcher or scientist
+	Other
+
+--Placeholder for social proof for people with similar roles who use GuidedTrack
+
+--*if: userRole "Researcher or scientist"
+--	*header: Lots of researchers use GuidedTrack
+--	Spen
+>> userGoal = []
+>> templateRecommendations = []
+*if: userRole = "Researcher or scientist"
+	--We would put some social proof/testimonials here. Right now I'm waiting on our push for testimonials. We need tweet length testimonials.
+	*header: Other researchers and scientists run all of their studies on GuidedTrack
+	
+	GuidedTrack is an ideal platform for social scientists who collect data online. It offers a flexibility and efficiency that I have not encountered in any other survey platforms. That said, you definitely don’t need any background in programming! The help guide has great tips and examples, and the customer support is excellent.
+	-Alexa H, PhD Candidate
+	
+	I ran all my studies for my PhD using GuidedTrack, and it really helped me to do so quickly and easily. The language is intuitive and quick to learn, with clear instructions - so it's easy to get started and learn as you go. If I had any difficulties using the platform, I got a fast and helpful response to my questions.
+	-Jess W, Social Science Researcher
+	
+	*button: Next
+	
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Write a survey
+		Design an experiment
+		Collect data online
+		Deploy an intervention
+		Write an interactive quiz
+		Create a psychometric scale
+		Provide digital instruction
+
+*if: userRole = "Educator or trainer"
+
+	*header: Educators can create the courses and lessons they dreamed of
+	
+	"GuidedTrack seems to be the teaching system I've been searching for. Most course systems nudge creators toward content dumping and quizzing. GuidedTrack enables learning adventures. I can decide where students go next based on their answers. The great thing about GuidedTrack is that I can add rich content by merely pointing and clicking, and edit through typing, or cut and paste."
+	-Ramses Oudt, Online Learning Expert
+	
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Create an interactive web presentation
+		Write a self-grading quiz
+		Build an interactive lesson
+		Automatically send an email follow-up after lesson or homework completion
+		Show learners their results in charts
+		Create an online course
+		Create a feedback form
+		
+*if: userRole = "Business process creator or manager"
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Build a job application workflow
+		Connect a few services you're familiar with through an API
+		Create a consistent decision procedure
+		Create an interview scheduler
+	
+*if: userRole = "Entrepreneur or product creator"
+
+	*header: Entrepreneurs build it themselves, quick and inexpensive
+	
+	GuidedTrack is a transformative tool for early-stage ventures! It allows you to build custom apps in a fraction of the typical time and cost. It's perfect for quickly prototyping and iterating new products. I think of it as the Wordpress for apps – you no longer need any coding experience to build your own apps, with access to powerful programming abilities.
+	-Caroline Mehl, Co-founded Open Mind using GuidedTrack to Build the App
+
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Write an onboarding flow
+		Build an app prototype
+		Build a custom interface
+		Write a feedback survey
+		Build an interactive lesson
+		Validate demand for an idea
+			
+*button: Next
+
+
+Whenever you have questions about how to do something, you can learn from the toolbar, our help docs, or by talking with other users in our slack group! You'll receive an invite code in your email.
+
+--Link to the How GuidedTrack Works program
