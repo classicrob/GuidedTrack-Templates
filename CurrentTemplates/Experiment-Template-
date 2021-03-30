@@ -1,0 +1,131 @@
+--{Randomized Experiment Template (intermediate)}
+
+*header: Does counting sheep help to fall asleep?
+
+Welcome to the experiment.
+
+By clicking the button below, you are agreeing to our [Terms of Service|http://www.gimbeltech.com/documents/terms_of_service.html]
+
+*button: Begin
+
+*question: Where do you live?
+
+*question: What’s your age?
+	*save: age
+	*type: number
+
+*question: To which gender identity do you identify?
+	Male
+	Female
+	Other
+		*question: Please, specify:
+	Prefer not to say
+
+--This is just a more concise way to write a multiple choice question.
+-->>symptomsInsomnia saves the possible responses to to a collection.
+>> symptomsInsomnia = ["Difficulty falling asleep at night", "Waking up during the night", "Waking up too early", "Not feeling well-rested", "None"]
+*question: Which symptoms of insomnia do you experience?
+	*answers: symptomsInsomnia
+	--*answers calls the symptomsInsomnia
+	--If you ask a question with the same answers repeatedly, then you might want to do this!
+
+*if: symptomsInsomnia = "None" or age < 18
+	Sorry, only adults with insomnia are eligible to participate in our experiment! If you're seeing this message, you've been screened out.
+	*quit
+
+--The keyword *randomize is used to randomly display one of the two sentences below it.
+*randomize
+	All done with this section.
+	This section is now complete. 
+
+Now you’ll take the _Brief Sleepiness Assessment_.
+
+*button: Next
+
+*maintain: Please select how much you agree or disagree with each claim
+--maintain will keep the text following it on the screen until you see *clear
+
+--We're scoring the participants respons in pre_fastToSleep, which takes different values depending on the answer to this question.
+*question: You could fall asleep instantly
+	Agree
+		>>pre_fastToSleep = 1 
+	Neither agree nor disagree
+		>>pre_fastToSleep = 0.5
+	Disagree
+		>>pre_fastToSleep = 0
+	
+*question: You are very relaxed
+	Agree
+		>>pre_relaxed = 1
+	Neither agree nor disagree
+		>>pre_relaxed = 0.5
+	Disagree...
+		>>pre_relaxed = 0
+
+--preInterventionSleepiness is a measure of how sleepy a user is before the intervention. 
+>>preInterventionSleepiness = pre_fastToSleep + pre_relaxed
+--We're going to compare this to postInterventionSleepiness, which we'll gather after the intervention under the *experiment
+	
+
+*clear
+--The *clear keyword will clear the maintained text (e.g. “Please answer honestly”). 
+
+Thank you!.
+
+_You’ll now be assigned to one of two interventions_.
+*button: Next
+
+
+--The *experiment keyword operates just like *randomize, except it keeps group numbers balanced.
+*experiment: SleepinessIntervention
+	*group: A
+	
+		>>interventionName = "COUNTING SHEEP"
+
+		You have been assigned the intervention {interventionName}:	
+		Right now, and for the next 10 seconds, Just count sheep!
+	
+		*image: http://1205271019.rsc.cdn77.org/images/guidedtrack/sheep.png
+			*caption: one, two, three, ...
+		
+		--The *wait keyword pauses the program for the specified amount of time. 
+		*wait:  10.seconds
+	
+	*group: B
+	
+		>>interventionName = "RELAXING SCENE"
+		
+		You have been assigned the intervention {interventionName}:	
+		*image: http://1205271019.rsc.cdn77.org/images/guidedtrack/Sunset-1154926563.png
+		Picture yourself sitting at the beach and watching a sunset over the ocean. 
+		
+		*wait: 10.seconds	
+
+Thanks! Now we’ll give you the Brief Sleepiness assessment again.
+
+*button: Next
+
+*maintain: Please select how much you agree or disagree with each claim
+
+--Okay, this looks like a lot, but it's just another way of asking the pre_intervention questions like we had above.
+--Here we're making a collection of answers and assigning a point value to each
+>>sleepinessQuestionAnswers = [["Agree", 1],["Neither agree nor disagree", 0.5],["Disagree", 0]]	
+*question: How long do you think it would take you to fall asleep right now?
+	*answers: sleepinessQuestionAnswers
+		--This is to show the "Agree" "Neither agree nor disagree," and "Disagree" with their associated values
+	*save: post_fastToSleep
+		--The point values are saved to this variable
+	
+--This is a really useful technique when you are asking questions with the same answers and point values repeatedly, like we have in this program. Then you wouldn't need to type so much! For an example of usage in a psychological scale, see: https://www.guidedtrack.com/programs/9198
+--Imagine if we just did this for all of the questions in this program since they're all functionally the same. This is sort of advanced though, so just know it's available to you as a method.
+*question: How relaxed so you feel right now?
+	*answers: postInterventionAnswers
+	*save: post_relaxed
+
+
+--preInterventionSleepiness is a measure of how sleepy a user is before the intervention. 
+>>postInterventionSleepiness = post_fastToSleep + post_relaxed
+
+Wow! Check this out: your overall sleepiness before the intervention was {preInterventionSleepiness} and now it is {postInterventionSleepiness}!
+
+Thank you. That’s the end of this *extremely scientific* experiment.

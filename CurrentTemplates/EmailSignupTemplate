@@ -1,0 +1,77 @@
+--{EmailSignupTemplate}
+--All of the questions indented beneath *page are on the same page
+*page
+	*header: Subscribe to my newsletter
+	--We're saving the person's name and email as variables so we can use it later to actually send them an email.
+	*question: What's your first name?
+		*save: firstName
+	*question: What's your last name?
+		*save: lastName
+	*question: What's your email?
+		*save: email
+		
+	*button: Submit
+
+--When not bound by a *page, each question marks the end of a page
+We're glad to have you here.
+*question: How did you hear about my business?
+	*save: whereHear
+	Social media
+	Friend
+	Online search
+	Other
+		--you can indent questions underneath answers to ask a follow-up question. This one is free response.
+		*question: How did you hear about my business?
+			*save: whereHear
+
+*question: Why are you subscribing to this newsletter?
+	*type: paragraph
+	*save: whySubscribe
+
+
+*header: Thank you! I will respond to your inquiry soon.
+
+--This is actually going to send an email! Try it out. If you go to Settings>Branding then you can change your email display name.
+*email
+	*subject: (CONFIRMATION) Inquiry received
+	*to: {email}
+	*body
+		Hello {firstName} {lastName},
+		Thank you contacting my business! I will respond to you as soon as I can.
+		You subscribed because: 
+		{whySubscribe}
+
+
+--OPTIONAL: Below is some extra stuff you can try out! You can send yourself a confirmation email, and you can add the respondent to a mailchimp email list.
+
+--OPTIONAL: send yourself a confirmation email
+--place your email address between the quotes and uncomment the email code below by removing the double dashes.
+-->> yourEmail = ""
+--*email
+	--*subject: (NOTIFICATION) New signup
+	--*to: yourEmail
+	--*body
+		--You have a new subscriber! 
+		--Their name is {firstName} {lastName}
+		--They heard from you via {whereHear}
+		--They subscribed to you because: {whySubscribe}
+		
+
+--OPTIONAL: Add to mailchimp list		
+--inputs:
+--TODO: Set value to email to add to audience and uncomment the line below by removing the dashes
+-->>in_email= email
+--TODO: Enter the audience ID and uncomment the line below by removing the dashes
+-->>in_subscriberListID= "4d4f25c038"
+
+--OPTIONAL
+--in_interestID: ID of an interest group to assign to the new subscriber. OPTIONAL. Default: ""
+--in_mailchimpMergeFields: association with values for selected merge tags, like {"FNAME"->"Wolfgang Amadeus", "LNAME"->"Mozart"}. OPTIONAL. Default: {}
+
+--TODO: Uncomment the line below when you have filled in in_email and in_subscriberListID
+--*program: mailchimp - add new email - public
+
+--outputs:
+--out_mailchimpResponse
+--out_error
+--out_errorCode

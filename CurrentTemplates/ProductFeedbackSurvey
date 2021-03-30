@@ -1,0 +1,74 @@
+--{ProductFeedbackSurvey}
+
+*settings
+	*back: yes
+	*menu: no
+
+*question: Let's get going. When you first used the product, what was *your overall impression of it?*
+	*save: overallImpression
+	Really positive
+	Positive
+	It was alright
+	Negative
+	Really negative
+	
+*if: overallImpression = "Really positive" or overallImpression = "Positive"
+	*question: Great. What do you like most about it?
+		*tip: Don't think, just write!
+		*type: paragraph
+	*question: And what do you think could still be *improved?*
+		*type: paragraph
+	*goto: overall quality question
+		--We're doing this so we don't ask someone who loves the product what would have to change to make it good
+		-- *goto will skip to the *label with the same name
+	
+
+*question: Thank you for your honesty. *What would have to change in order for you to have a good user experience?*
+
+*label: overall quality question	
+*question: *Overall quality* -- How would you rate the product?
+	*type: slider
+	*tip: 1 means awful, 5 means amazing
+	1
+	2
+	3
+	4
+	5
+
+*question: How disappointed would you be if you had to give up the product?
+	Very disappointed
+	Somewhat disappointed
+	Not very disappointed
+	Not at all disappointed
+	
+*question: How would you rate its value for money?
+	1 means money down the drain, 5 means totally worth it
+	*type: slider
+	1
+	2
+	3
+	4
+	5
+	
+*question: How likely are you to *replace* your current solution with this product?
+	*type: slider
+	*max: 10
+	*before: Not at all likely
+	*after: Extremely likely
+
+*question: What is your current solution?
+
+*question: How likely are you to recommend this product to someone you know?
+	*type: slider
+	*max: 10
+	*before: Not at all likely
+	*after: Extremely likely
+	*save: NPS
+
+*if: NPS < 7
+	*question: Got it. Why wouldn't you recommend it?
+
+*if: NPS >= 7
+	*question: {NPS}, great. Why would you recommend it?
+
+*header: We're done! Big thanks.

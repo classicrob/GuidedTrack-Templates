@@ -1,0 +1,45 @@
+--{Belen Starter Program}
+
+*label: Beginning
+
+*header: Hello, world!
+
+Thank you for using this program!
+*image: https://cdn.pixabay.com/photo/2017/07/10/16/07/thank-you-2490552_1280.png
+
+*question: Can you tell us your name?
+    *save: userName 
+
+{userName}, we would love to know more about you!
+
+*question: What is your favorite color?
+    Red 
+    Blue
+
+*question: Star Trek or Star Wars?
+    *save: starAnswer
+    Star Trek 
+        Live long and prosper, {userName}!
+    Star Wars 
+        Really?
+        *question: Who is your favorite Star Wars character?
+            Darth Vader
+                Nice!
+                *image: https://media.giphy.com/media/d2sdxvH0u2oU0/giphy.gif
+                *button: Next
+            Han Solo
+                *image: https://media.giphy.com/media/sjhsTOB3WVjJm/giphy.gif
+
+*if: starAnswer = "Star Trek"
+    *image: https://media.giphy.com/media/2EzVNMLqpNVn2/giphy.gif
+    *button: Next 
+
+We are *so happy* that you are using _this program_!
+
+*question: By the way, how old are you?
+    *type: number
+
+*question: Ok, {userName}. Would you like to do this again or are you done?
+    Do this again 
+        *goto: Beginning
+    I'm done

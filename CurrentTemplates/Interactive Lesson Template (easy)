@@ -1,0 +1,117 @@
+--{Interactive Lesson Template (easy)}
+
+*settings
+	*back: yes
+--This is the standard way to add back buttons in your program. If you do not want your program to feature buttons that allow the user to return to the previous page, then do not include this code.
+
+
+*header: How to Make Delicious Smoothies
+
+Smoothies can offer a  delicious and super healthy surge to your day. With this training program you’ll be on your way to making fabulous smoothies in minutes. 
+
+*question: First, would you like to learn how to make smoothies or skip right ahead to the practice test?
+	Learn how to make smoothies
+		On we go then!
+	Skip to the practice test
+		No problem. Let’s skip to the practice test now.
+		*goto: practice_test
+			--Later in this program, you'll see "*label: practice_test." *goto jumps you to the location of a *label
+
+*label: trainingSteps
+--This *label keyword has been placed here as a sort of bookmark. 
+
+
+*header: Step 1: Get stuff and put it in a blender.
+*image: http://i.imgur.com/Q9PjaPk.jpg
+	*caption: Look at that fruit!
+
+That’s a picture of a blender. If you would prefer to conserve electricity then you might be able to hook a blender up to your bicycle. Watch the video below to learn more.
+
+*video: http://www.youtube.com/embed/lv4Q9ShAlFE?rel=0
+
+By the way, here are the ingredients we like in our smoothies:
+*list
+	Kale
+	Berries or other fruit
+	Honey
+	Almond milk
+
+*button: Next
+
+Let’s make sure you’re paying attention!
+
+-- *points will add and subtract points from the participant's total.
+*question: What can you use to blend if you want to conserve electricity?
+	An electric drill
+		*points: -500
+		Wrong! An electric drill /does/ use electricity. 
+	A potato masher
+		*points: 0
+		Maybe you could use a potato masher, but there’s a better answer.
+	A bicycle
+		*points: 1000
+		Correct!
+
+*button: Continue to Step 2
+
+*header: Step 2: Blend smoothie, then enjoy
+
+Here’s how to blend the smoothie:
+*list: ordered
+	Press the button that makes the whirring thing whir
+	Wait a while
+	Press the off button
+
+*button: Next
+
+Your smoothie is now ready for you to enjoy!  
+	*back: no
+--Though back buttons are on for the entirety of the program, it is possible to select certain pages for which it will be impossible for users to return to again by pressing a back button. This is useful for marking a point of no return. Simply indent "*back: no" beneath the first line or question that appears on the page.
+
+*question: That’s the end of the training. Would you like to review the steps again or move on to the practice test?
+	Review the steps again
+		*goto: trainingSteps
+	Move to the practice test
+
+Here we go!
+
+*label: practice_test
+
+
+*label: q1wrong
+	--Can you tell what this lets you do? Look at the next question.
+*header: Practice Test
+*question: 1) Which of the following is not one of our favorite smoothie ingredients?
+	Kale
+		*points: 0
+		Kale was incorrect! Try again.
+		*goto: q1wrong
+			--This is going to give the learner another chance at success!
+			--This will *goto the *label q1wrong
+	Honey
+		*points: 0
+		Honey was incorrect! Try again.
+		*goto: q1wrong
+	Fruit
+		*points: 0
+		Kale was incorrect! Try again.
+		*goto: q1wrong
+	Ice
+		*points: 500
+		That’s correct, we never listed ice as one of our favorites, though you could certainly add it if you like.
+		
+--Want to try making it give the user another chance at success if they get it wrong? See the above question for an example!
+*question: 2) Fill in the blank. Press the button that makes the _______ thing whir.
+	*type: text
+	whirring
+		*points: 1000
+		That’s correct! 
+	whirable
+		*points: 500
+		Close enough. 
+	*other
+		*points: 0
+		Wrong. The correct answer was “whirring.”
+--In this example, users who type in the word “whirring” (or “WHIRRING,” “WhiRRing,” etc.) will receive 1000 points. Users who type something other than “whirring” or “whirable” (e.g. “whiralicious”) will receive 0 points.
+
+That’s the end. Now you know how to make smoothies. Congratulations!

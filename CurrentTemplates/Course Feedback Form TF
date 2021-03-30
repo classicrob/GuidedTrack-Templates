@@ -1,0 +1,180 @@
+--{Course Feedback Form TF}
+
+*image: https://images.typeform.com/images/TLQARuY63mDA/image/default
+Can you help us make this course better for future students?
+*button: Sure I can
+
+*question: Thank you so much. So, what's the *name of the course* you took?
+	*save: courseName
+	*tip: The course ID would work, too
+
+*question: When did you finish {courseName}?
+	*type: calendar
+	*time: no
+
+*question: And *where* did you take the course?
+	*save: courseLocation
+	Campus A
+	Campus B
+	Campus C
+	
+*question: Did {courseLocation} *live up to your expectations?* 
+	Yes
+		*goto: 6
+	No
+
+*question: Sorry to hear that. *Why not?*
+
+*label: 6
+
+*maintain: Alright, these questions are about the *course design.*
+>> rating5 = [1,2,3,4,5]
+*label: 6a
+*question: In your opinion, how clear were the *course objectives?* 
+	*type: slider
+	*before: Unclear
+	*after: Super clear
+	*answers: rating5
+
+*label: 6b
+*question: And did the *structure and sequence of the lectures* make sense?
+	*type: slider
+	*before: Not at all
+	*after: Very much so
+	*save: structureClarity
+	*answers: rating5
+	
+*if: structureClarity > 3
+	*goto: 6d
+
+*label: 6c	
+*question: Alright, {structureClarity}/5. *What change* would make that better?
+
+*label: 6d
+*question: The course contents were *illustrated* with...
+	Too many examples
+	A good amount of examples
+	Few examples
+	Not enough examples
+
+*label: 6e
+*question: And the *level* of the course was...
+	*type: slider
+	*before: Too easy
+	*after: Too hard
+	--note: there's no "middle" option. In the TF there's a middle option. 
+	*answers: rating5
+
+*label: 6f	
+*question: How *theoretical* was the course?
+	*type: slider
+	*before: Not theoretical
+	*after: Very theoretical
+	*answers: rating5
+	
+*label: 6g
+The course exposed you to *new knowledge* and practices."
+*question: 👆️ Do you agree?
+	Definitely, yes
+	Yes, sort of
+	Not really
+	Definitely not
+	
+*label: 6h
+*question: Overall, how much did {courseName} meet your expectations?
+	*type: slider
+	*before: It didn't
+	*after: It exceeded expectations
+	*save: expectations
+	*answers: rating5
+	
+*if: expectations > 3
+	*goto: 7
+
+*label: 6i
+*question: Thanks for your honesty. *In what way did it fail* to meet your expectations?
+*clear
+
+
+*label: 7
+*maintain: Alright, moving on to the teaching and materials.
+
+"The lecturers were clear and *easy to understand.*"
+*question: 👆️️ Do you agree?
+	*type: slider
+	*before: Not at all
+	*after: Very much so
+	*answers: rating5
+
+"The *teaching aids* were used well."
+*question: 👆️️ Do you agree?
+	*type: slider
+	*before: Not at all
+	*after: Very much so
+	*answers: rating5
+
+"The course material you got (books and stuff) was enough."
+*question: 👆️️ Do you agree?
+	*type: slider
+	*before: Not at all
+	*after: Very much so
+	*answers: rating5
+
+
+"The *teachers were enthusiastic* and encouraging."
+*question: 👆️️ Do you agree?
+	*type: slider
+	*before: Not at all
+	*after: Very much so
+	*answers: rating5
+
+*question: The *best thing* about the teachers was...
+
+*question: The *worst thing* about the teachers was...
+
+*question: Do you think the *course objectives* were realized?
+	Yes
+	No
+*clear
+
+*question: *Would you recommend {courseName} to someone you know?*
+	*save: recommend
+	Yes
+		*picture: https://images.typeform.com/images/yzCZMV4g5uXx/image/default
+	No
+		*picture: https://images.typeform.com/images/SwPLtFMkRrYS/image/default
+		
+*question: {recommend}? Okay what's your *main reason for that?* 
+
+*You're almost there.* Just four more questions.
+*button: Let's wrap this up
+
+>> rating10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+*question: All things considered, how would you *rate* {courseName}?
+	*type: slider
+	*answers: rating10
+	*save: courseRating
+	
+*if: courseRating <= 6
+	*question: Thanks for your honesty. *What disappointed you* the most?
+		*type: paragraph
+
+*if: courseRating >= 7
+	*question: Great. What did you *like most* about the course?
+		*type: paragraph
+	
+*question: If you could *change one thing* about {courseName} what would it be?
+
+*question: And finally, can we get your *email?*
+	*tip: It's just to follow-up, not for spam. 
+	*save: email
+	
+*header: Thanks so much
+We'll use your feedback to improve the course, and get in touch if we need to check anything with you.
+	
+
+*email
+	*to: {email}
+	*subject: Thank you for taking the feedback survey!
+	*body
+		We'll use your feedback to improve the course, and get in touch if we need to check anything with you.

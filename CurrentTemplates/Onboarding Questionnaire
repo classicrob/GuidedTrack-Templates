@@ -1,0 +1,99 @@
+--{Onboarding Questionnaire}
+
+*question: What's your role?
+	*save: userRole
+	Entrepreneur or product creator
+	Business process creator or manager
+	Educator or trainer
+	Researcher or scientist
+
+--Placeholder for social proof for people with similar roles who use GuidedTrack
+
+--*if: userRole "Researcher or scientist"
+--	*header: Lots of researchers use GuidedTrack
+--	Spen
+>> userGoal = []
+*if: userRole = "Researcher or scientist"
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Write a survey
+		Design an experiment
+		Collect data online
+		Deploy an intervention
+		Write an interactive quiz
+		Create a psychometric scale
+		Provide digital instruction
+
+-->> GoalAndPriorAlternative = []
+-->> priorAlternative = []
+-->> index = 1	
+--*while: index <= userGoal.size
+--	*question: What were you doing for {userGoal[index]} before?
+--		*save: priorAlternative
+--	>> GoalAlternativePairing = {userGoal[index], priorAlternative[index]}
+--	>> GoalAndPriorAlternative.add(GoalAlternativePairing)
+--	>> index = index + 1
+--how could I save this association between the user goal and what they were doing before?
+
+
+*if: userRole = "Educator or trainer"
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Create an interactive web presentation
+		Write a self-grading quiz
+		Build an interactive lesson
+		Automatically send an email follow-up after lesson or homework completion
+		Show learners their results in graphical formats
+		Create an online course
+		Create a feedback form
+		
+*if: userRole = "Business process creator or manager"
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Build a job application workflow
+		Connect a few services you're familiar with through an API
+		Create a consistent decision procedure
+		Create an interview scheduler
+		
+*if: userRole = "Entrepreneur or product creator"
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Write an onboarding flow
+		Build an app prototype
+		Build a custom interface
+		Write a feedback survey
+		Build an interactive lesson
+		Validate demand for an idea
+		
+Your goals are to:
+*{userGoal}*
+You can do that in GuidedTrack! Check out our templates for examples.
+*button: Next
+
+Whenever you have questions about how to do something, you can learn from the toolbar, our help docs, or by joining our slack community to ask a question! Here's an invite code: __________
+*question: How do you want to learn?
+	*tip: This will all be available no matter what you pick, this will just jump you to your choice as a starting point.
+	*save: howLearn
+	
+	A program explicitly made to learn how Guidedtrack works
+		*goto: https://guidedtrack-stage.herokuapp.com/programs/42jyuas/preview
+		
+	Exploring existing templates
+		*question: Would you like help figuring out what templates to start with, or do you just want to find them on your own?
+			Help me out
+				Cool! We don't have that built yet, so click next to go to the templates. 
+				*button: Next
+				*goto: https://guidedtrack-stage.herokuapp.com/programs
+			I'll just look through them
+				*goto: https://guidedtrack-stage.herokuapp.com/programs
+				
+	Creating your own program from scratch and playing with it
+		Okay! I just recommend that you start by exploring the toolbar. Hover your mouse over one of the icons to the left of the text editor.
+		*button: Next
+		*goto: https://guidedtrack-stage.herokuapp.com/programs
+	
+--Figure out how to embed the signup within this program so afterwards I can 

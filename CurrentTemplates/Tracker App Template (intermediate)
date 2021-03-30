@@ -1,0 +1,53 @@
+--{Tracker App Template (intermediate)}
+
+--This program tracks the calories a person eats in a day. Use it to create apps to track the number of miles you run per week, minutes spent reading every day, etc...https://www.guidedtrack.com/programs/j9gdyqh/preview
+
+--Here we have a calorie tracker app. The user logs on, logs the amount of calories they just consumed, and view it. Press preview, try it out!
+
+--The first time that a user runs the program, they have not logged in any calories. We're just setting up these variables to 
+>>totalCalories = 0
+	--This is the total amount of calories the user has logged. We'll update this for each entry.
+>>caloriesYesterday = 0
+	--This is how many calories the user consumed yesterday.
+
+*label: EnterCalories
+
+*question: Enter the amount of calories of your last meal
+	*type: number
+	*save: recordedCalories
+		--Here we're saving the number of calories the user just logged.
+	
+>>totalCalories = recordedCalories + totalCalories
+	--Here we're updating the total amount of calories the user logged today
+
+*header: Total calories so far today: {totalCalories}
+
+*if: (totalCalories > caloriesYesterday and caloriesYesterday > 0)
+	--The sentences below will only be displayed if the following conditions are met:
+	--The user ate more calories today than yesterday
+	--The user logged calories at least once yesterday.
+	*Watch out!* You have already consumed more calories than yesterday.
+
+*chart: Today's calories so far vs. Yesterday's
+	--Remember, you can make this using the chart function in the content section of the toolbar
+	*type: bar
+		--Check your other calories.
+	*data: [["Today", totalCalories], ["Yesterday", caloriesYesterday]]
+		--["x", y] is the format for data entry.
+	*xaxis: Calories
+	*yaxis: Day
+
+*question: Please select one:
+	Start new day
+		--Store yesterday's calories in a new variable and reset totalCalories to start a new day
+		>>caloriesYesterday = totalCalories
+		>>totalCalories = 0
+	Add another meal
+		--With the *goto that comes next, you return to where you EnterCalories
+	Check your total calories for the day
+		{totalCalories} calories consumed today
+*if: totalCalories < 600
+	You need to eat more :D
+	*button: Home
+	
+*goto: EnterCalories
