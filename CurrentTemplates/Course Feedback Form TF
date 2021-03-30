@@ -1,8 +1,11 @@
 --{Course Feedback Form TF}
 
 *image: https://images.typeform.com/images/TLQARuY63mDA/image/default
-Can you help us make this course better for future students?
-*button: Sure I can
+*question: Can you help us make this course better for future students?
+	Yes 
+	No
+		*goto: end
+		--This will take nonconsenting individuals to the end of the program rather than having them answer questions.
 
 *question: Thank you so much. So, what's the *name of the course* you took?
 	*save: courseName
@@ -20,23 +23,20 @@ Can you help us make this course better for future students?
 	
 *question: Did {courseLocation} *live up to your expectations?* 
 	Yes
-		*goto: 6
 	No
-
-*question: Sorry to hear that. *Why not?*
-
-*label: 6
+		*question: Sorry to hear that. *Why not?*
 
 *maintain: Alright, these questions are about the *course design.*
->> rating5 = [1,2,3,4,5]
-*label: 6a
 *question: In your opinion, how clear were the *course objectives?* 
 	*type: slider
-	*before: Unclear
-	*after: Super clear
-	*answers: rating5
-
-*label: 6b
+	1 - Unclear
+	2
+	3
+	4
+	5 - Clear 
+	
+--using rating5 and *answers: rating5 is just a more concise way to do what we did in the previous question, especially since there are multiple questions with the same set of answers. You can just reuse them!
+>> rating5 = [1,2,3,4,5]
 *question: And did the *structure and sequence of the lectures* make sense?
 	*type: slider
 	*before: Not at all
@@ -44,35 +44,29 @@ Can you help us make this course better for future students?
 	*save: structureClarity
 	*answers: rating5
 	
-*if: structureClarity > 3
-	*goto: 6d
+*if: structureClarity <= 3
+	*question: Alright, {structureClarity}/5. *What change* would make that better?
 
-*label: 6c	
-*question: Alright, {structureClarity}/5. *What change* would make that better?
-
-*label: 6d
 *question: The course contents were *illustrated* with...
 	Too many examples
 	A good amount of examples
 	Few examples
 	Not enough examples
 
-*label: 6e
 *question: And the *level* of the course was...
 	*type: slider
-	*before: Too easy
-	*after: Too hard
-	--note: there's no "middle" option. In the TF there's a middle option. 
-	*answers: rating5
+	1 - Too easy
+	2
+	3 - Neither easy nor hard
+	4
+	5 - Too hard
 
-*label: 6f	
 *question: How *theoretical* was the course?
 	*type: slider
 	*before: Not theoretical
 	*after: Very theoretical
 	*answers: rating5
 	
-*label: 6g
 The course exposed you to *new knowledge* and practices."
 *question: 👆️ Do you agree?
 	Definitely, yes
@@ -80,7 +74,6 @@ The course exposed you to *new knowledge* and practices."
 	Not really
 	Definitely not
 	
-*label: 6h
 *question: Overall, how much did {courseName} meet your expectations?
 	*type: slider
 	*before: It didn't
@@ -88,15 +81,10 @@ The course exposed you to *new knowledge* and practices."
 	*save: expectations
 	*answers: rating5
 	
-*if: expectations > 3
-	*goto: 7
+*if: expectations <= 3
+	*question: Thanks for your honesty. *In what way did it fail* to meet your expectations?
+	*clear
 
-*label: 6i
-*question: Thanks for your honesty. *In what way did it fail* to meet your expectations?
-*clear
-
-
-*label: 7
 *maintain: Alright, moving on to the teaching and materials.
 
 "The lecturers were clear and *easy to understand.*"
@@ -178,3 +166,6 @@ We'll use your feedback to improve the course, and get in touch if we need to ch
 	*subject: Thank you for taking the feedback survey!
 	*body
 		We'll use your feedback to improve the course, and get in touch if we need to check anything with you.
+
+*label: end 
+	--This label is only here so people who don't consent don't need to answer all of the questions.
