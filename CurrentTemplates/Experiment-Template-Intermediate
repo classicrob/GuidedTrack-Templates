@@ -11,6 +11,7 @@ By clicking the button below, you are agreeing to our [Terms of Service|http://w
 *question: Where do you live?
 
 *question: What’s your age?
+	*save: age
 	*type: number
 
 *question: To which gender identity do you identify?
@@ -22,13 +23,16 @@ By clicking the button below, you are agreeing to our [Terms of Service|http://w
 
 --This is just a more concise way to write a multiple choice question.
 -->>symptomsInsomnia saves the possible responses to to a collection.
->> symptomsInsomnia = ["Difficulty falling asleep at night", "Waking up during the night", "Waking up too early", "Not feeling well-rested"]
+>> symptomsInsomnia = ["Difficulty falling asleep at night", "Waking up during the night", "Waking up too early", "Not feeling well-rested", "None"]
 *question: Which symptoms of insomnia do you experience?
 	*answers: symptomsInsomnia
 	--*answers calls the symptomsInsomnia
 	--If you ask a question with the same answers repeatedly, then you might want to do this!
-		
 
+*if: symptomsInsomnia = "None" or age < 18
+	Sorry, only adults with insomnia are eligible to participate in our experiment! If you're seeing this message, you've been screened out.
+	*quit
+	--*quit exits the program.
 
 --The keyword *randomize is used to randomly display one of the two sentences below it.
 *randomize
@@ -39,24 +43,24 @@ Now you’ll take the _Brief Sleepiness Assessment_.
 
 *button: Next
 
-*maintain: Please answer honestly
+*maintain: Please select how much you agree or disagree with each claim
 --maintain will keep the text following it on the screen until you see *clear
 
 --We're scoring the participants respons in pre_fastToSleep, which takes different values depending on the answer to this question.
-*question: How long do you think it would take you to fall asleep right now?
-	0 seconds
+*question: You could fall asleep instantly
+	Agree
 		>>pre_fastToSleep = 1 
-	A few minutes
+	Neither agree nor disagree
 		>>pre_fastToSleep = 0.5
-	There's no way I can go to sleep now!
+	Disagree
 		>>pre_fastToSleep = 0
 	
-*question: How relaxed so you feel right now?
-	I feel totally relaxed
+*question: You are very relaxed
+	Agree
 		>>pre_relaxed = 1
-	I could use some unwinding!
+	Neither agree nor disagree
 		>>pre_relaxed = 0.5
-	I'm totally wired...
+	Disagree...
 		>>pre_relaxed = 0
 
 --preInterventionSleepiness is a measure of how sleepy a user is before the intervention. 
@@ -75,11 +79,8 @@ _You’ll now be assigned to one of two interventions_.
 
 --The *experiment keyword operates just like *randomize, except it keeps group numbers balanced.
 *experiment: SleepinessIntervention
-	*group: A
-	
-		>>interventionName = "COUNTING SHEEP"
+	*group: Counting Sheep
 
-		You have been assigned the intervention {interventionName}:	
 		Right now, and for the next 10 seconds, Just count sheep!
 	
 		*image: http://1205271019.rsc.cdn77.org/images/guidedtrack/sheep.png
@@ -88,11 +89,9 @@ _You’ll now be assigned to one of two interventions_.
 		--The *wait keyword pauses the program for the specified amount of time. 
 		*wait:  10.seconds
 	
-	*group: B
-	
-		>>interventionName = "RELAXING SCENE"
-		
-		You have been assigned the intervention {interventionName}:	
+	*group: Relaxing Scene
+		--note how this group receives a different intervention than the other, which was asked to count sheep
+		You will picture yourself in a relaxing scene.
 		*image: http://1205271019.rsc.cdn77.org/images/guidedtrack/Sunset-1154926563.png
 		Picture yourself sitting at the beach and watching a sunset over the ocean. 
 		
@@ -102,20 +101,23 @@ Thanks! Now we’ll give you the Brief Sleepiness assessment again.
 
 *button: Next
 
+*maintain: Please select how much you agree or disagree with each claim
+
+--Okay, this looks like a lot, but it's just another way of asking the pre_intervention questions like we had above.
+--Here we're making a collection of answers and assigning a point value to each
+>>sleepinessQuestionAnswers = [["Agree", 1],["Neither agree nor disagree", 0.5],["Disagree", 0]]
 *question: How long do you think it would take you to fall asleep right now?
-	0 seconds
-		>>post_fastToSleep = 1 
-	A few minutes
-		>>post_fastToSleep = 0.5
-	There's no way I can go to sleep now!
-		>>post_fastToSleep = 0
+	*answers: sleepinessQuestionAnswers
+		--This is to show the "Agree" "Neither agree nor disagree," and "Disagree" with their associated values
+	*save: post_fastToSleep
+		--The point values are saved to this variable
 	
---This is simply another way to generate the same sort of multiple choice questions you see above. Don't think too hard about it, just know this is an available way to assign points to collections of answers.
---You might want to do this if you were giving someone a personality scale, every question was a scale from agree to disagree, and you wanted them all to  have the same scoring
->>questionTwoAnswers = [["I feel totally relaxed", 1],["I could use some unwinding!", 0.5],["I'm totally wired...", 0]]	
+--This is a really useful technique when you are asking questions with the same answers and point values repeatedly, like we have in this program. Then you wouldn't need to type so much! For an example of usage in a psychological scale, see: https://www.guidedtrack.com/programs/9198
+--Imagine if we just did this for all of the questions in this program since they're all functionally the same. This is sort of advanced though, so just know it's available to you as a method.
 *question: How relaxed so you feel right now?
-	*answers: questionTwoAnswers
+	*answers: postInterventionAnswers
 	*save: post_relaxed
+
 
 --preInterventionSleepiness is a measure of how sleepy a user is before the intervention. 
 >>postInterventionSleepiness = post_fastToSleep + post_relaxed
