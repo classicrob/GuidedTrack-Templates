@@ -19,9 +19,9 @@ Also, you can edit this program however you want! Just place your cursor in the 
 
 Hello, {userName}!
 
-You can add text, multimedia, lists, and more. Check out the Content section of the toolbar to learn how and try it out.
-*image: https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FRobAndHisNotes%2F87_ZJIfisb.png?alt=media&token=88dd7ecc-8861-4a10-96d2-ebbc0be26ec2
-	*caption: The Content section of the toolbar
+You can add text, multimedia, lists, and more. Check out the Basics section of the toolbar to learn how and try it out.
+*image: https://1092980442.rsc.cdn77.org/Content-Section-Toolbar.png
+	*caption: The Basics section of the toolbar
 	
 *button: Next page
 
@@ -79,12 +79,12 @@ You can also ask follow-up questions based on the user's response through indent
 
 	*button: Let's get going!
 
-You can ask many different types of questions. Go to questions in the toolbar (Interactions section) and change the *Type* to whatever you want. Try playing with it!
-*image: https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FRobAndHisNotes%2FZp2srQ8vA6.png?alt=media&token=beec518f-e331-4c99-bd83-2952cfe4fd1e
+You can ask many different types of questions. Go to questions in the toolbar (in the "Basics" section) and change the *Type* to whatever you want. Try playing with it!
+*image: https://1092980442.rsc.cdn77.org/Question-Basics-Toolbar.png
 *button: Next
 
-When the user answers questions, GuidedTrack collects data[! You can click here to see what participant data is collected.
-*image: https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FRobAndHisNotes%2F8slPrOWIMq.png?alt=media&token=c732819c-1a00-4600-a716-11277165c9a7
+When the user answers questions, GuidedTrack collects data! You can click here to see what participant data is collected.
+*image: https://1092980442.rsc.cdn77.org/Data-Top-Bar.png
 *button: Next
 
 Feel free to play around with this program by editing the code or create a new program from any of our templates to get started!
@@ -94,5 +94,3 @@ Feel free to play around with this program by editing the code or create a new p
 	Start over
 		*goto: Beginning
 			--This will take you back to the *label at the beginning with the same name.
-		
-
