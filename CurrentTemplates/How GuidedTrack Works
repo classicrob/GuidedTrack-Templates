@@ -20,6 +20,12 @@ Also, you can edit this program however you want! Just place your cursor in the 
 Hello, {userName}!
 
 You can add text, multimedia, lists, and more. Check out the Basics section of the toolbar to learn how and try it out.
+*html
+	<style>
+		.multimedia_node img {
+			width: 300px;
+		}
+	</style>
 *image: https://1092980442.rsc.cdn77.org/Content-Section-Toolbar.png
 	*caption: The Basics section of the toolbar
 	
@@ -60,6 +66,12 @@ You can also ask follow-up questions based on the user's response through indent
 --Only people who answered Yes to "Can you speak Spanish?" will see this. Everyone else skips right over it!
 *if: Spanish = "Yes"
 	This is another way you can change the flow of a program! You can save a user's past choice and only give certain content based on their answers.
+	*html
+		<style>
+			.multimedia_node img {
+				width: 500px;
+			}
+		</style>
 	*image: https://media.makeameme.org/created/what-if-soy-26fc0eb6f8.jpg
 	*button: Next
 	
@@ -80,10 +92,22 @@ You can also ask follow-up questions based on the user's response through indent
 	*button: Let's get going!
 
 You can ask many different types of questions. Go to questions in the toolbar (in the "Basics" section) and change the *Type* to whatever you want. Try playing with it!
+*html
+	<style>
+		.multimedia_node img {
+			width: 400px;
+		}
+	</style>
 *image: https://1092980442.rsc.cdn77.org/Question-Basics-Toolbar.png
 *button: Next
 
 When the user answers questions, GuidedTrack collects data! You can click here to see what participant data is collected.
+*html
+	<style>
+		.multimedia_node img {
+			width: 300px;
+		}
+	</style>
 *image: https://1092980442.rsc.cdn77.org/Data-Top-Bar.png
 *button: Next
 
