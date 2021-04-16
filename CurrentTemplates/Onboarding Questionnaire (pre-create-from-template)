@@ -19,9 +19,9 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 *question: What role best describes you?
 	*save: userRole
 	Entrepreneur or online product creator
+	Researcher or scientist
 	Business process creator or manager
 	Educator or trainer
-	Researcher or scientist
 	Other
 
 --Placeholder for social proof for people with similar roles who use GuidedTrack
@@ -34,12 +34,15 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 *if: userRole = "Researcher or scientist"
 	--We would put some social proof/testimonials here. Right now I'm waiting on our push for testimonials. We need tweet length testimonials.
 	*header: Other researchers and scientists run all of their studies on GuidedTrack
-	
-	GuidedTrack is an ideal platform for social scientists who collect data online. It offers a flexibility and efficiency that I have not encountered in any other survey platforms. That said, you definitely don’t need any background in programming! The help guide has great tips and examples, and the customer support is excellent.
-	-Alexa H, PhD Candidate
-	
-	I ran all my studies for my PhD using GuidedTrack, and it really helped me to do so quickly and easily. The language is intuitive and quick to learn, with clear instructions - so it's easy to get started and learn as you go. If I had any difficulties using the platform, I got a fast and helpful response to my questions.
-	-Jess W, Social Science Researcher
+	*component
+		*GuidedTrack is an ideal platform for social scientists who collect data online.* It offers a flexibility and efficiency that I have not encountered in any other survey platforms. *That said, you definitely don’t need any background in programming!*
+		/-Alexa H, PhD Candidate/
+	*component
+		*I ran all my studies for my PhD using GuidedTrack, and it really helped me to do so quickly and easily.* The language is intuitive and quick to learn, with clear instructions in the toolbar and help guide - so *it's easy to get started and learn as you go.* If I had any difficulties using the platform, I got a fast and helpful response to my questions.
+		/-Jess W, Social Science Researcher/
+	*component
+		Inexpensive, easy to learn how to do it. *In my first experiment using Guided Track,* I time planned for one week to convert my survey mockup into a fully coded + properly designed survey, with appropriate randomisation etc. *It took me one morning!*
+		/- Jamie Harris, researcher/
 	
 	*button: Next
 	
@@ -49,7 +52,7 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 		Write a survey
 		Design an experiment
 		Collect data online
-		Deploy an intervention
+		Create or deploy a digital intervention
 		Write an interactive quiz
 		Create a psychometric scale
 		Provide digital instruction
@@ -57,9 +60,17 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 *if: userRole = "Educator or trainer"
 
 	*header: Educators can create the courses and lessons they dreamed of
+
+	*component	
+		"GuidedTrack seems to be the teaching system I've been searching for. Most course systems nudge creators toward content dumping and quizzing. *GuidedTrack enables learning adventures.* 
+		
+		I can decide where students go next based on their answers. *The great thing about GuidedTrack is that I can add rich content and questions by merely pointing and clicking, and edit through typing, or cut and paste.*"
+		/-Ramses Oudt, Online Learning Expert/
 	
-	"GuidedTrack seems to be the teaching system I've been searching for. Most course systems nudge creators toward content dumping and quizzing. GuidedTrack enables learning adventures. I can decide where students go next based on their answers. The great thing about GuidedTrack is that I can add rich content by merely pointing and clicking, and edit through typing, or cut and paste."
-	-Ramses Oudt, Online Learning Expert
+	*component
+		"I absolutely love GuidedTrack. I built DollarsEd, a financial education course for twenty-something year-olds. *I created my first prototype lesson in GuidedTrack in half an hour, then the next one, until eventually the entire app was done.* I started simple and added bells and whistles later."
+		/- Raffi Grinberg, Founder of DollarsEd/
+	
 	
 	*question: What do you want to do?
 		*save: userGoal
@@ -81,13 +92,18 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 		Create a consistent decision procedure
 		Create an interview scheduler
 	
-*if: userRole = "Entrepreneur or product creator"
+*if: userRole = "Entrepreneur or online product creator"
 
 	*header: Entrepreneurs build it themselves, quick and inexpensive
+	*component
+		"GuidedTrack is a transformative tool for early-stage ventures! *It's perfect for quickly/cheaply prototyping and iterating new products.* I think of it as the Wordpress for apps – *you no longer need any coding experience to build your own apps,* with access to powerful programming abilities."
+		/-Caroline Mehl, Co-founded Open Mind using GuidedTrack to Build the App/
+	*component
+		"I absolutely love GuidedTrack. I built DollarsEd, a financial education course for twenty-something year-olds. *I created my first prototype lesson in GuidedTrack in half an hour, then the next one, until eventually the entire app was done.* I started simple and added bells and whistles later."
+		/- Raffi Grinberg, Founder of DollarsEd/
+		
+	*button: Next
 	
-	GuidedTrack is a transformative tool for early-stage ventures! It allows you to build custom apps in a fraction of the typical time and cost. It's perfect for quickly prototyping and iterating new products. I think of it as the Wordpress for apps – you no longer need any coding experience to build your own apps, with access to powerful programming abilities.
-	-Caroline Mehl, Co-founded Open Mind using GuidedTrack to Build the App
-
 	*question: What do you want to do?
 		*save: userGoal
 		*type: checkbox
@@ -97,8 +113,7 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 		Write a feedback survey
 		Build an interactive lesson
 		Validate demand for an idea
-			
-*button: Next
+
 
 
 Whenever you have questions about how to do something, you can learn from the toolbar, our help docs, or by talking with other users in our slack group! You'll receive an invite code in your email.
