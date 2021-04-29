@@ -3,8 +3,18 @@
 	*back: yes
 	
 *header: Welcome to GuidedTrack
+
 We help non-coders and coders alike create interactive courses, apps, surveys, and experiments based on their own subject matter expertise.
-Right now you are seeing your first program made in GuidedTrack. You'll be able to build something just like this!
+
+Right now you are seeing your first program made in GuidedTrack. *You can write something just like this!* 
+
+After you make it through this short program, you'll get to see how it's done.
+
+--We help non-coders and coders alike create choose-your-own-adventure sequences of pages, with questions, conditionals, loops, and randomization. You can create linear narratives or open exploration where the user is in total control. Perfect for research, education, business 
+
+--This is a questionnaire built using GuidedTrack. Your responses to questions will determine what follow-up questions and pages you receive. This is a fairly basic program.
+
+--I could make a little game for this where I list all of the lego pieces for this program and ask people how they would create it. You get to run the preview of the program, and you have to arrange the pieces.. Drag and drop the pieces. WHAT IF TEMPLATES are actually just a list of components and snippets. 
 
 *html
 	<style>
@@ -16,6 +26,10 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 
 *button: Tell us about yourself
 
+One of GuidedTrack's greatest strengths is in the choose-your-own-adventure like control you have over how your program flows. /Short of a full-blown programming language like JavaScript or Python, no alternative gives you that./
+
+Your answer to the following question will determine the testimonials and follow-up questions we show you.
+
 *question: What role best describes you?
 	*save: userRole
 	Entrepreneur or online product creator
@@ -26,9 +40,6 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 
 --Placeholder for social proof for people with similar roles who use GuidedTrack
 
---*if: userRole "Researcher or scientist"
---	*header: Lots of researchers use GuidedTrack
---	Spen
 >> userGoal = []
 >> templateRecommendations = []
 *if: userRole = "Researcher or scientist"
@@ -71,6 +82,7 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 		"I absolutely love GuidedTrack. I built DollarsEd, a financial education course for twenty-something year-olds. *I created my first prototype lesson in GuidedTrack in half an hour, then the next one, until eventually the entire app was done.* I started simple and added bells and whistles later."
 		/- Raffi Grinberg, Founder of DollarsEd/
 	
+	*button: Next
 	
 	*question: What do you want to do?
 		*save: userGoal
@@ -113,9 +125,52 @@ Right now you are seeing your first program made in GuidedTrack. You'll be able 
 		Write a feedback survey
 		Build an interactive lesson
 		Validate demand for an idea
+		
+*if: userRole = "Other"
+	--TODO
+	People use GuidedTrack
+	
+	*component
+		"I absolutely love GuidedTrack. I built DollarsEd, a financial education course for twenty-something year-olds. *I created my first prototype lesson in GuidedTrack in half an hour, then the next one, until eventually the entire app was done.* I started simple and added bells and whistles later."
+		/- Raffi Grinberg, Founder of DollarsEd/
+		
+	*component
+		*I ran all my studies for my PhD using GuidedTrack, and it really helped me to do so quickly and easily.* The language is intuitive and quick to learn, with clear instructions in the toolbar and help guide - so *it's easy to get started and learn as you go.* If I had any difficulties using the platform, I got a fast and helpful response to my questions.
+		/-Jess W, Social Science Researcher/
+	
+	*component
+		*GuidedTrack is an ideal platform for social scientists who collect data online.* It offers a flexibility and efficiency that I have not encountered in any other survey platforms. *That said, you definitely don’t need any background in programming!*
+		/-Alexa H, PhD Candidate/
+	
+	*component
+		"GuidedTrack is a transformative tool for early-stage ventures! *It's perfect for quickly/cheaply prototyping and iterating new products.* I think of it as the Wordpress for apps – *you no longer need any coding experience to build your own apps,* with access to powerful programming abilities."
+		/-Caroline Mehl, Co-founded Open Mind using GuidedTrack to Build the App/
+		
+	*button: Next
+	
+	*question: What do you want to do?
+		*type: checkbox
+		Write a survey
+		Write a research study
+		Create an interactive lesson
+		Design a consistent decision procedure
+		Create tracker apps and personal tools
+		Write choose-your-own-adventure forms and stories
+
+It is easy to get started with GuidedTrack and you can learn as you go. Things may start out slower than you're used to in other apps, but as you gain familiarity, you'll be able to write a program as fast as you can type. /No app that requires you to click and drag a million little things can beat that speed./
+
+In a minute, we are going to send you into a basic program you can edit that will teach you all you need to get started.
+
+*button: Next
 
 
 
-Whenever you have questions about how to do something, you can learn from the toolbar, our help docs, or by talking with other users in our slack group! You'll receive an invite code in your email.
+From there, you'll have complete freedom. Whenever you have questions about how to do something, you can learn from:
+*list
+	Creating your program from the toolbar
+	Referring to our help docs
+	Playing with examples in templates
+	Talking with other users in our slack group
 
+*button: Finish
 --Link to the How GuidedTrack Works program
