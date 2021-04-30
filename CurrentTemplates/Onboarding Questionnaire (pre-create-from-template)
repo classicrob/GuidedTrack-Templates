@@ -12,9 +12,8 @@ After you make it through this short program, you'll get to see how it's done.
 
 --We help non-coders and coders alike create choose-your-own-adventure sequences of pages, with questions, conditionals, loops, and randomization. You can create linear narratives or open exploration where the user is in total control. Perfect for research, education, business 
 
---This is a questionnaire built using GuidedTrack. Your responses to questions will determine what follow-up questions and pages you receive. This is a fairly basic program.
+--This is a questionnaire built using GuidedTrack. Your responses to questions will determine what follow-up questions and pages you receive. This is a fairly basic program, which you will be able to recreate.
 
---I could make a little game for this where I list all of the lego pieces for this program and ask people how they would create it. You get to run the preview of the program, and you have to arrange the pieces.. Drag and drop the pieces. WHAT IF TEMPLATES are actually just a list of components and snippets. 
 
 *html
 	<style>
