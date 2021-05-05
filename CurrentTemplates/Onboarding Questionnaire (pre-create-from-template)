@@ -127,7 +127,7 @@ Your answer to the following question will determine the testimonials and follow
 		
 *if: userRole = "Other"
 	--TODO
-	People use GuidedTrack
+	GuidedTrack can build just about any choose-your-own-adventure flow of pages.
 	
 	*component
 		"I absolutely love GuidedTrack. I built DollarsEd, a financial education course for twenty-something year-olds. *I created my first prototype lesson in GuidedTrack in half an hour, then the next one, until eventually the entire app was done.* I started simple and added bells and whistles later."
