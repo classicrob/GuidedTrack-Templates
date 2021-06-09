@@ -26,14 +26,8 @@
 *question: Thank you for your honesty. *What would have to change in order for you to have a good user experience?*
 
 *label: overall quality question	
-*question: *Overall quality* -- How would you rate the product?
+*question: *Overall quality* -- How would you rate the product out of 100?
 	*type: slider
-	*tip: 1 means awful, 5 means amazing
-	1
-	2
-	3
-	4
-	5
 
 *question: How disappointed would you be if you had to give up the product?
 	Very disappointed

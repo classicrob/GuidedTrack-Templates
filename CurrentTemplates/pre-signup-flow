@@ -1,0 +1,44 @@
+--{Onboarding Questionnaire}
+*settings
+	*back: yes
+
+*label: beginning
+
+*header: Welcome to GuidedTrack
+
+We help non-coders and coders alike create interactive courses, apps, surveys, and experiments based on their own subject matter expertise.
+
+Right now you are seeing your first program made in GuidedTrack. *You can write something just like this!* 
+
+That's right. *You just write.*
+
+*image: https://www.guidedtrack.com/assets/gt-logo-vertical.png
+
+*button: Go on...
+
+*header: Everything you know and love about text editors works here
+
+You can copy, paste, select an arbitrary amount of text, and more. You can even do fancy stuff, like using multiple cursors.
+
+*image: Gif of me pasting the questions into GT and having multiple questions. Gif of rearranging stuff.
+
+The only limit to your speed is how fast you can type. Nothing that requires you to click buttons and then type can possibly be faster.
+
+*button: But what can I do with it?
+
+Anything you want. Seriously. It's extremely unlikely that you'll stop being able to do stuff.
+
+*button: Next
+
+And you'll be able to write programs before you even know how with our templates and and toolbar.
+
+*image: gif
+
+*question: 
+	See this again
+		*goto: beginning
+	Make an account:
+		*goto: URL for the rest of the onboarding questionnaire where you have to create an account and it's not split view
+
+
+
