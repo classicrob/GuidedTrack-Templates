@@ -65,7 +65,7 @@ Now you’ll take the _Brief Sleepiness Assessment_.
 
 --preInterventionSleepiness is a measure of how sleepy a user is before the intervention. 
 >>preInterventionSleepiness = pre_fastToSleep + pre_relaxed
---We're going to compare this to postInterventionSleepiness, which we'll gather after the intervention under the *experiment
+--We're going to compare this to postInterventionSleepiness, which we'll calculate after the intervention under the *experiment
 	
 
 *clear
@@ -103,7 +103,7 @@ Thanks! Now we’ll give you the Brief Sleepiness assessment again.
 
 *maintain: Please select how much you agree or disagree with each claim
 
---Okay, this looks like a lot, but it's just another way of asking the pre_intervention questions like we had above.
+--Okay, this looks like a lot, but it's just another way of asking the pre_intervention questions like we had before the experiment.
 --Here we're making a collection of answers and assigning a point value to each
 >>sleepinessQuestionAnswers = [["Agree", 1],["Neither agree nor disagree", 0.5],["Disagree", 0]]
 *question: How long do you think it would take you to fall asleep right now?
