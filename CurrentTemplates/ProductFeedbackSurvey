@@ -1,5 +1,5 @@
 --{ProductFeedbackSurvey}
-
+--The settings keyword gives participants a way to return to previous questions
 *settings
 	*back: yes
 	*menu: no
@@ -12,12 +12,16 @@
 	Negative
 	Really negative
 	
+--If the person's answer to the previous question was either "Really positive" or "Positive," it'll ask the questions indendent underneath it.
 *if: overallImpression = "Really positive" or overallImpression = "Positive"
 	*question: Great. What do you like most about it?
 		*tip: Don't think, just write!
 		*type: paragraph
+		*save: likeMost
+
 	*question: And what do you think could still be *improved?*
 		*type: paragraph
+
 	*goto: overall quality question
 		--We're doing this so we don't ask someone who loves the product what would have to change to make it good
 		-- *goto will skip to the *label with the same name
@@ -36,7 +40,7 @@
 	Not at all disappointed
 	
 *question: How would you rate its value for money?
-	1 means money down the drain, 5 means totally worth it
+	*tip: 1 means money down the drain, 5 means totally worth it
 	*type: slider
 	1
 	2
@@ -45,6 +49,10 @@
 	5
 	
 *question: How likely are you to *replace* your current solution with this product?
+	--Each of the keywords indented below this question are attributes of the question
+	--The keywords modify the question
+	--It doesn't matter what order the attributes are written, they all apply to the question
+	--You don't need to remember these. Just use BASICS>QUESTION in the toolbar and it will help you create this
 	*type: slider
 	*max: 10
 	*before: Not at all likely
@@ -57,12 +65,40 @@
 	*max: 10
 	*before: Not at all likely
 	*after: Extremely likely
-	*save: NPS
+	*save: recommendationLikelihood
 
-*if: NPS < 7
+--Ask a followup question depending on how likely someone is to recommend the product
+*if: recommendationLikelihood < 7
 	*question: Got it. Why wouldn't you recommend it?
 
-*if: NPS >= 7
-	*question: {NPS}, great. Why would you recommend it?
+*if: recommendationLikelihood >= 7
+	*question: {NPS}, great! Are you willing write a testimonial for us to share on our website?
+		Yes
+			Thank you!
+			
+			For inspiration, here is what you said you liked the most earlier:
+			
+			--This will display their response to a previous question
+			{likeMost}
 
-*header: We're done! Big thanks.
+			*question: What would you like potential users to know about our product?
+				*type: paragraph
+		No
+
+*question: Would you be interested in being talking to us via video call about your experience using GuidedTrack?
+	Yes
+		*question: What is your name?
+			*save: name
+		*question: What is your email?
+			*save: email
+
+		*email
+			*subject: (CONFIRMATION) User Interview
+			*to: {email}
+			*body
+				Thank you for agreeing to participate in a user interview for our product, {name}. We will reach out soon via email to schedule a time for us to talk.
+			
+		*button: Next
+	No
+
+*header: We're done! Thank you for taking the time!
