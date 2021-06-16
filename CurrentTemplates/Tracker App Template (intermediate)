@@ -14,12 +14,6 @@
 *label: home screen
 *header: Total calories so far today: {totalCalories}
 
-*if: (totalCalories > caloriesYesterday and caloriesYesterday > 0)
-	--The sentences below will only be displayed if the following conditions are met:
-	--The user ate more calories today than yesterday
-	--The user logged calories at least once yesterday.
-	*Watch out!* You have already consumed more calories than yesterday.
-
 *chart: Today's calories so far vs. Yesterday's
 	--Remember, you can make this using the chart function in the Basics section of the Toolbar
 	*type: bar
@@ -45,9 +39,16 @@
 		--With the *goto that comes next, you return to where you EnterCalories
 		>>totalCalories = recordedCalories + totalCalories
 			--Here we're updating the total amount of calories the user logged today
-		*if: totalCalories < 600
-			You need to eat more :D
-			*button: Home
+
+--The sentences below will only be displayed if the following conditions are met:
+--The user ate more calories today than yesterday
+--The user logged calories at least once yesterday.
+*if: (totalCalories > caloriesYesterday and caloriesYesterday > 0)
+	*Watch out!* You have already consumed more calories than yesterday.
+	
+--this will display if the user has eaten less than 600 calories today
+*if: totalCalories < 600
+	You need to eat more :D
 
 --After the user has either started a new day or added more calories, they will be sent to the home screen
 --goto sends the user to either a label or a URL
