@@ -20,7 +20,8 @@
 		--Check your other calories.
 	*data: [["Today", totalCalories], ["Yesterday", caloriesYesterday]]
 		--["x", y] is the format for data entry.
-		--totalCalories and caloriesYesterday are variables so don't need the quotes around them
+		--"Today" and "Yesterday" are words you want to display, so you put quotes around them
+		--totalCalories and caloriesYesterday are variables. They will show their current value.
 	*xaxis: Calories
 	*yaxis: Day
 
