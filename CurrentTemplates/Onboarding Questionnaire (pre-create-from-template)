@@ -10,11 +10,6 @@ Right now you are seeing your first program made in GuidedTrack. *You can write 
 
 After you make it through this short program, you'll get to see how it's done.
 
---We help non-coders and coders alike create choose-your-own-adventure sequences of pages, with questions, conditionals, loops, and randomization. You can create linear narratives or open exploration where the user is in total control. Perfect for research, education, business 
-
---This is a questionnaire built using GuidedTrack. Your responses to questions will determine what follow-up questions and pages you receive. This is a fairly basic program, which you will be able to recreate.
-
-
 *html
 	<style>
 		.multimedia_node img {
@@ -23,7 +18,11 @@ After you make it through this short program, you'll get to see how it's done.
 	</style>
 *image: https://www.guidedtrack.com/assets/gt-logo-vertical.png
 
+*button: GuidedTrack 
+
 *button: Tell us about yourself
+
+-- look at this GIF to see
 
 One of GuidedTrack's greatest strengths is in the choose-your-own-adventure like control you have over how your program flows. /Short of a full-blown programming language like JavaScript or Python, no alternative gives you that./
 
