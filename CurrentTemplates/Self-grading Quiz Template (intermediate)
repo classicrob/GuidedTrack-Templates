@@ -35,6 +35,7 @@ You only have 10 seconds to answer this question!
 	*countdown: 10.seconds
 	4
 		>>scoreQuestion3 = 1
+		Four is correct!
 	5
 		>>scoreQuestion3 = 0
 		Wrong. Try again!
@@ -45,23 +46,25 @@ You only have 10 seconds to answer this question!
 		*goto: 1+3
 
 --This builds on the same code as above to give the participant two attempts.
---*while means that everything indented underneath it will loop as long as its condition is true.
+--*while means that everything indented underneath it will repeat/loop as long as its condition is true.
 --This one will loop until the user has attempted twice. {attempts} starts out as equaling 1, but after they get the wrong answer, it will change {attempts} to 2.
--- --If the user gets it wrong the second time, {attempts} goes to 3 and the *while loop is over.
+--If the user gets it wrong the second time, {attempts} goes to 3 and the *while loop is over.
 -- >>attempt = 1
 -- *while: attempt < 3 
--- 	*label: 2*2
--- 	*question: How much is 2*2? You have two attempts
+-- 	*question: How much is 2*3? You have two attempts
 -- 		4
--- 			>>scoreQuestion3 = 1
--- 		5
--- 			>>scoreQuestion3 = 0
+--			>>scoreQuestion4 = 0
 -- 			Wrong. One more try!
+-- 			>> attempt = attempt + 1	
+-- 		5
+-- 			>>scoreQuestion4 = 0
+-- 			Wrong. One more try!a
 -- 			>> attempt = attempt + 1
 -- 		6
--- 			>>scoreQuestion3 = 0
--- 			Wrong. One more try!
--- 			>> attempt = attempt + 1
+--			Four is correct!
+--			>>scoreQuestion4 = 1
+--			>>attempt = attempt + 3
+
 
 
 		
@@ -89,5 +92,3 @@ You are finished with the test.
 *header: Your final score is {testScore}%.
 *if: testScore > 50
 	Congratulations! You are super smart.
-
-	
