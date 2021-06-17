@@ -1,4 +1,4 @@
---{Onboarding Questionnaire}
+--{Onboarding Questionnaire pre-signup-flow}
 *settings
 	*back: yes
 
@@ -16,29 +16,26 @@ That's right. *You just write.*
 
 *button: Go on...
 
-*header: Everything you know and love about text editors works here
+*header: Everything you know and love about text editors works here. The only limit to your speed is how fast you can type.
 
 You can copy, paste, select an arbitrary amount of text, and more. You can even do fancy stuff, like using multiple cursors.
 
-*image: Gif of me pasting the questions into GT and having multiple questions. Gif of rearranging stuff.
+Nothing that requires you to click buttons and then type can possibly be faster.
 
-The only limit to your speed is how fast you can type. Nothing that requires you to click buttons and then type can possibly be faster.
+*image: Gif of me pasting the questions into GT and having multiple questions. Gif of rearranging stuff.
 
 *button: But what can I do with it?
 
-Anything you want. Seriously. It's extremely unlikely that you'll stop being able to do stuff.
+GuidedTrack is more powerful and flexible than any other app on the market. It won't take long to get started, and the sky is the limit.
 
-*button: Next
-
-And you'll be able to write programs before you even know how with our templates and and toolbar.
+You'll be able to write programs before you even know how with our templates and and toolbar.
 
 *image: gif
+
+*button: Next
 
 *question: 
 	See this again
 		*goto: beginning
 	Make an account:
 		*goto: URL for the rest of the onboarding questionnaire where you have to create an account and it's not split view
-
-
-
