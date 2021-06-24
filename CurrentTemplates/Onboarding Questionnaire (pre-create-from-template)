@@ -4,7 +4,7 @@
 	
 *header: Let's get to know each other
 
-One of GuidedTrack's greatest strengths is in the choose-your-own-adventure like control you have over how your program flows. /Short of a full-blown programming language like JavaScript or Python, no alternative gives you that./
+One of GuidedTrack's greatest strengths is in the choose-your-own-adventure like control you have over how your program flows. /Short of a full-blown programming language like JavaScript or Python, no alternative gives you the same flexibility./
 
 Your answer to the following question will determine the testimonials and follow-up questions we show you.
 
@@ -19,7 +19,7 @@ Your answer to the following question will determine the testimonials and follow
 >> userGoal = []
 *if: userRole = "Researcher or scientist"
 	--We would put some social proof/testimonials here. Right now I'm waiting on our push for testimonials. We need tweet length testimonials.
-	*header: Other researchers and scientists run all of their studies on GuidedTrack
+	*header: GuidedTrack will grow with your career. You'
 	*component
 		*GuidedTrack is an ideal platform for social scientists who collect data online.* It offers a flexibility and efficiency that I have not encountered in any other survey platforms. *That said, you definitely don’t need any background in programming!*
 		/-Alexa H, PhD Candidate/
