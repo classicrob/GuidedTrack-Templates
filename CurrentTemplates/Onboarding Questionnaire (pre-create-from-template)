@@ -2,27 +2,7 @@
 *settings
 	*back: yes
 	
-*header: Welcome to GuidedTrack
-
-We help non-coders and coders alike create interactive courses, apps, surveys, and experiments based on their own subject matter expertise.
-
-Right now you are seeing your first program made in GuidedTrack. *You can write something just like this!* 
-
-After you make it through this short program, you'll get to see how it's done.
-
-*html
-	<style>
-		.multimedia_node img {
-			width: 160px;
-		}
-	</style>
-*image: https://www.guidedtrack.com/assets/gt-logo-vertical.png
-
-*button: GuidedTrack 
-
-*button: Let's get to know each other
-
--- look at this GIF to see
+*header: Let's get to know each other
 
 One of GuidedTrack's greatest strengths is in the choose-your-own-adventure like control you have over how your program flows. /Short of a full-blown programming language like JavaScript or Python, no alternative gives you that./
 
@@ -36,10 +16,7 @@ Your answer to the following question will determine the testimonials and follow
 	Educator or trainer
 	Other
 
---Placeholder for social proof for people with similar roles who use GuidedTrack
-
 >> userGoal = []
->> templateRecommendations = []
 *if: userRole = "Researcher or scientist"
 	--We would put some social proof/testimonials here. Right now I'm waiting on our push for testimonials. We need tweet length testimonials.
 	*header: Other researchers and scientists run all of their studies on GuidedTrack
@@ -160,11 +137,21 @@ In a minute, we are going to send you into a basic program you can edit that wil
 
 
 From there, you'll have complete freedom. Whenever you have questions about how to do something, you can learn from:
-*list
+*list: expandable
 	Creating your program from the toolbar
+		*image: https://1092980442.rsc.cdn77.org/Basics-Section-Toolbar.png
+		*image: https://1092980442.rsc.cdn77.org/Question-Basics-Toolbar.png
 	Referring to our help docs
+		*image: https://1092980442.rsc.cdn77.org/help-docs.png
 	Playing with examples in templates
+		
 	Talking with other users in our slack group
+		Ask questions, show-and-tell, and help others! Talk with the team and other users.
+		*component
+			*header: Click Here
+			*click
+				*goto: https://join.slack.com/t/guidedtrackworkspace/shared_invite/zt-oa8ieuy9-l2qBDDCBAz69nyligSSRQQ
+
 
 *button: Finish
 --Link to the How GuidedTrack Works program
