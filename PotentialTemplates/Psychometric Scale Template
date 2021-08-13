@@ -1,0 +1,78 @@
+--{Psychometric Scale Template}
+
+--citation: Diener, E., Wirtz, D., Tov, W., Kim-Prieto, C., Choi, D., Oishi, S., & Biswas-Diener, R. (2009). New measures of well-being: Flourishing and positive and negative feelings. Social Indicators Research, 39, 247-266.
+--------------------------------------------------------------
+--description: self-rating of functioning in major life areas. To score, add the responses, varying from 1 to 7, for all eight items. The possible range of scores is from 8 (lowest possible) to 56 (highest PWB possible). A high score represents a person with many psychological resources and strengths
+
+--Variables initialization
+>>fsScore = 0
+>>fsScale = [["Strongly Agree",7],["Agree",6],["Slightly Agree",5],["Neither agree nor disagree",4],["Slightly disagree",3],["Disagree",2],["Strongly disagree",1]]
+
+*maintain: Here are eight statements with which you may agree or disagree. Indicate your agreement with each statement.
+
+--Questionnaire
+*question: I lead a purposeful and meaningful life.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsLastAnswer
+
+*question: My social relationships are supportive and rewarding.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsScore + fsLastAnswer
+
+*question: I am engaged and interested in my daily activities.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsScore + fsLastAnswer
+
+*question: I actively contribute to the happiness and well-being of others.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsScore + fsLastAnswer
+
+*question: I am competent and capable in the activities that are important to me.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsScore + fsLastAnswer
+
+*question: I am a good person and live a good life.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsScore + fsLastAnswer
+
+*question: I am optimistic about my future.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsScore + fsLastAnswer
+
+*question: People respect me.
+	*answers: fsScale
+	*save: fsLastAnswer
+	
+>>fsScore = fsScore + fsLastAnswer
+
+--scoreNormalization
+>>fsScore0to1Scale = (fsScore - 8)/(6*8)
+
+
+
+
+--Your score was {phq9DepressionScore}. 
+--*if: phq9DepressionScore < 6
+--	No depression!
+--*if: phq9DepressionScore > 5 and phq9DepressionScore < 11
+--	Mild depression!
+--*if: phq9DepressionScore > 10 and phq9DepressionScore < 16
+--	Moderate depression!
+--*if: phq9DepressionScore > 15 and phq9DepressionScore < 21 
+--	Moderately severe depression
+--*if: phq9DepressionScore > 20
+--	Severe depression

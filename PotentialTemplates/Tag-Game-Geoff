@@ -1,0 +1,30 @@
+--{Tag-Game-Geoff}
+
+Tag......
+
+
+>> IsIt = "Not It" 
+
+
+*while: IsIt = "Not It"
+	*question: Wanna Play?
+		*save: Answer
+		Yes
+			*icon: fa-briefcase
+		No, I hate tag. 
+			*icon: glyphicon-plus
+		
+	*if: Answer = "Yes"	
+		*randomize: 1
+			*group
+				Not it!
+				>> IsIt = "Not It"
+			*group
+				Not it!
+				>> IsIt = "Not It"
+			*group
+				You're it!
+				>> IsIt = "You're It"
+				
+	*if: Answer = "No I hate Tag"
+		*button: Please play, we only need one more

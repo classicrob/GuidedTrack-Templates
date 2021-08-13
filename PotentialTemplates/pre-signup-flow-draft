@@ -1,0 +1,41 @@
+--{Onboarding Questionnaire pre-signup-flow}
+*settings
+	*back: yes
+
+*label: beginning
+
+*header: Welcome to GuidedTrack
+
+We help non-coders and coders alike create interactive courses, apps, surveys, and experiments based on their own subject matter expertise.
+
+Right now you are seeing your first program made in GuidedTrack. *You can write something just like this!* 
+
+That's right. *You just write.*
+
+*image: https://1092980442.rsc.cdn77.org/gt.png
+
+*button: Go on...
+
+*header: Everything you know and love about text editors works here. The only limit to your speed is how fast you can type.
+
+You can copy, paste, select an arbitrary amount of text, and more. You can even do fancy stuff, like using multiple cursors.
+
+Nothing that requires you to click buttons and then type can possibly be faster.
+
+*image: Gif of me pasting the questions into GT and having multiple questions. Gif of rearranging stuff.
+
+*button: But what can I do with it?
+
+GuidedTrack is more powerful and flexible than any other app on the market. It won't take long to get started, and the sky is the limit.
+
+You'll be able to write programs before you even know how with our templates and and toolbar.
+
+*image: gif
+
+*button: Next
+
+*question: 
+	See this again
+		*goto: beginning
+	Make an account:
+		*goto: URL for the rest of the onboarding questionnaire where you have to create an account and it's not split view

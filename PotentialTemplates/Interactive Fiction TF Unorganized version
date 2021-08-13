@@ -1,0 +1,63 @@
+*question: They're here. Oh God! They've found you!
+	Run
+		*question: Their vision is based on movement, they give chase.
+			Keep running
+			Give in
+	Hide
+		*question: There's a pile of rubble you can squeeze under. A metal object glints faintly. 
+			Examine
+			Stay hidden
+	
+*question: They're fast, too fast. They're catching up.
+	Turn and fight
+	Hide
+	
+
+	
+*question: Your heart beats so loudly, you're sure they'll hear. An hour passes.
+	Wait
+	Look around
+	
+*question: Suddenly you jerk awake! How much time has passed? It is night.
+	Stay hidden
+	Leave
+	
+*question: They've gone. Slowly, you creep out. Blood is smeared on the streets. You are tired.
+	Give in
+	Weep
+	
+*question: Pitch black night. No moon. No stars. 
+	Switch on torch
+	Call out for help
+	
+*question: Nothing left to lose! You cry out. Your voice echoes but there is no answer.
+	Give in
+	Weep
+	
+*question: Tears stream down your cheeks. You're utterly alone. Are you the last one left?
+	Give in
+	Carry on
+	
+*question: Devoid of energy, you stumble down one dark alley after another. Everything is miserable. You come across a door slightly ajar.
+	Go inside
+	Keep walking
+	
+*question: Death will not find you. They *enjoy* the chase. With a last burst of energy, you run. You hear them shift. Their claws scrape the ground. You trip.
+	Get up
+	Surrender
+	
+*question: The creature chasing you is... young! Its teeth look brittle.
+	Fight
+	Reason with it
+	
+*question: You turn down a street just as desolate as the others. Immediate regret. The creature stares at you without blinking.
+	Punch it in the mouth
+	Try to reason with it
+	
+*question: "Why?" you scream, "Why?". It pauses, then replies. "Because you deserve it."
+	You do
+	You don't
+	
+*question: It won't listen to your lies. It slithers closer. 
+	Fight
+	Plead

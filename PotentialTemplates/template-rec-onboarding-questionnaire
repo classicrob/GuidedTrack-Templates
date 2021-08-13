@@ -1,0 +1,203 @@
+--{Onboarding Questionnaire}
+*settings
+	*back: yes
+	
+*header: Welcome to GuidedTrack
+We help non-coders and coders alike create interactive courses, apps, surveys, and experiments based on their own subject matter expertise.
+Right now you are seeing your first program made in GuidedTrack. You'll be able to build something just like this!
+
+*html
+	<style>
+		.multimedia_node img {
+			width: 160px;
+		}
+	</style>
+*image: https://www.guidedtrack.com/assets/gt-logo-vertical.png
+
+*button: Tell us about yourself
+
+*question: What role best describes you?
+	*save: userRole
+	Entrepreneur or product creator
+	Business process creator or manager
+	Educator or trainer
+	Researcher or scientist
+
+--Placeholder for social proof for people with similar roles who use GuidedTrack
+
+--*if: userRole "Researcher or scientist"
+--	*header: Lots of researchers use GuidedTrack
+--	Spen
+>> userGoal = []
+>> templateRecommendations = []
+*if: userRole = "Researcher or scientist"
+	--We would put some social proof/testimonials here. Right now I'm waiting on our push for testimonials. We need tweet length testimonials.
+	Other researchers and scientists have some friendly words:
+	
+	GuidedTrack is an ideal platform for social scientists who collect data online. It offers a flexibility and efficiency that I have not encountered in any other survey platforms. That said, you definitely don’t need any background in programming! The help guide has great tips and examples, and the customer support is excellent.
+	-Alexa H, PhD Candidate
+	
+	I ran all my studies for my PhD using GuidedTrack, and it really helped me to do so quickly and easily. The language is intuitive and quick to learn, with clear instructions - so it's easy to get started and learn as you go. If I had any difficulties using the platform, I got a fast and helpful response to my questions.
+	-Jess W, Social Science Researcher
+	
+	*button: Next
+	
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Write a survey
+		Design an experiment
+			
+		Collect data online
+			--Email signup form
+			--Send them via email guides to using positly
+		Deploy an intervention
+			--Mood journal template
+		Write an interactive quiz
+			
+		Create a psychometric scale
+			
+		Provide digital instruction
+		
+	--This is making it so we can recommend a few templates to them
+	*if: "Write a survey" in userGoal
+		>>templateRecommendations.add("GuidedTrack Product Feedback Form Template")
+	*if: "Design an experiment" in userGoal
+		>>templateRecommendations.add("Randomized Experiment Template")
+	*if: "Deploy an intervention" in userGoal
+		>>templateRecommendations.add("Tracker App Template")
+	*if: "Write an interactive quiz" in userGoal
+		>>templateRecommendations.add("Self-Scoring Quiz Template")
+	*if: "Create a psychometric scale" in userGoal
+		>>templateRecommendations.add("Single Facet Flourishing Scale")
+	*if: "Provide digital instruction" in userGoal
+		>>templateRecommendations.add("Interactive Lesson Template")
+
+
+*if: userRole = "Educator or trainer"
+
+	Other educators have some friendly words:
+	
+	"GuidedTrack seems to be the teaching system I've been searching for. Most course systems nudge creators toward content dumping and quizzing. GuidedTrack enables learning adventures. I can decide where students go next based on their answers. The great thing about GuidedTrack is that I can add rich content by merely pointing and clicking, and edit through typing, or cut and paste."
+	-Ramses Oudt, Online Learning Expert
+	
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Create an interactive web presentation
+		Write a self-grading quiz
+		Build an interactive lesson
+		Automatically send an email follow-up after lesson or homework completion
+		Show learners their results in charts
+		Create an online course
+		Create a feedback form
+		
+		
+	*if: "Create an interactive web presentation" in userGoal
+		*if: not "Interactive Lesson Template" in templateRecommendations
+			>>templateRecommendations.add("Interactive Lesson Template")
+	*if: "Write a self-grading quiz" in userGoal
+		*if: not "Self-Scoring Quiz Template" in templateRecommendations
+			>>templateRecommendations.add("Self-Scoring Quiz Template")
+	*if: "Create an interactive web presentation" in userGoal
+		*if: not "Interactive Lesson Template" in templateRecommendations
+			>>templateRecommendations.add("Interactive Lesson Template")
+	*if: "Automatically send an email follow-up after lesson or homework completion" in userGoal
+		>>templateRecommendations.add("Email Signup Form Template")
+	*if: "Show learners their results in charts" in userGoal
+		*if: not "Tracker App Template" in templateRecommendations
+			>>templateRecommendations.add("Tracker App Template")
+	*if: "Create a feedback form" in userGoal
+		>>templateRecommendations.add("Course Feedback Form Template")	
+	*if: "Build an interactive lesson" in userGoal
+		*if: not "Interactive Lesson Template" in templateRecommendations
+			>>templateRecommendations.add("Tracker App Template")	
+	
+	
+		
+*if: userRole = "Business process creator or manager"
+	-- Frankly I'm not super familiar with this use case. I haven't done any user interviews with anyone like this.
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Build a job application workflow
+			--We don't have a template for this
+		Connect a few services you're familiar with through an API
+
+		Create a consistent decision procedure
+			--We've got nada, but could maybe use a ClearerThinking program as a template
+		Create an interview scheduler
+			--Nada
+	*if: "Connect a few services you're familiar with through an API" in userGoal
+		*if: not "Email Signup Form Template" in templateRecommendations
+			>>templateRecommendations.add("Email Signup Form Template")
+	
+*if: userRole = "Entrepreneur or product creator"
+
+	Other entrepreneurs have nice things to say about GuidedTrack:
+	
+	GuidedTrack is a transformative tool for early-stage ventures! It allows you to build custom apps in a fraction of the typical time and cost. It's perfect for quickly prototyping and iterating new products. I think of it as the Wordpress for apps – you no longer need any coding experience to build your own apps, with access to powerful programming abilities.
+	-Caroline Mehl, Co-founded Open Mind using GuidedTrack to Build the App
+
+	*question: What do you want to do?
+		*save: userGoal
+		*type: checkbox
+		Write an onboarding flow
+			--Display this as a template
+		Build an app prototype
+			--Calorie Counter
+		Build a custom interface
+			--nada
+		Write a feedback survey
+			--Product Feedback Survey
+		Build an interactive lesson
+			--Interactive Lesson Template
+		Validate demand for an idea
+			--Product Feedback Survey
+			--Calorie Counter
+			
+--so based on a userGoal and userRole we preload different templates into the person's account, or we can do softer personalization like I have in lines 53-57
+--If we're going to do this like here, then I need some way to easily show recommendations for the different templates based on difficulty.		
+Your goals are to:
+*{userGoal}*
+You can do that in GuidedTrack! Check out our templates for examples.
+
+We recommend looking at: {templateRecommendations}
+*button: Next
+
+
+Whenever you have questions about how to do something, you can learn from the toolbar, our help docs, or by joining our online community! You'll receive an invite code in your email.
+
+We're about to send you to a program explicitly designed to help you understand GuidedTrack better. Before you go, here's a quick video that will help you understand what you're seeing.
+
+
+-- Whenever you have questions about how to do something, you can learn from the toolbar, our help docs, or by joining our slack community to ask a question! Here's an invite code: __________
+-- *question: How do you want to learn?
+-- 	*tip: This will all be available no matter what you pick, this will just jump you to your choice as a starting point.
+-- 	*save: howLearn
+	
+-- 	A program explicitly made to learn how Guidedtrack works
+-- 		*goto: https://guidedtrack-stage.herokuapp.com/programs/42jyuas/preview
+		
+-- 	Exploring existing templates
+-- 		*question: Would you like help figuring out what templates to start with, or do you just want to find them on your own?
+-- 			Help me out
+-- 				Cool! We don't have that built yet, so click next to go to the templates. 
+-- 				*button: Next
+-- 				*goto: https://guidedtrack-stage.herokuapp.com/programs
+-- 			I'll just look through them
+-- 				*goto: https://guidedtrack-stage.herokuapp.com/programs
+				
+-- 	Creating your own program from scratch and playing with it
+-- 		Okay! I just recommend that you start by exploring the toolbar. Hover your mouse over one of the icons to the left of the text editor.
+-- 		*button: Next
+-- 		*goto: https://guidedtrack-stage.herokuapp.com/programs
+		
+-- 	View and edit the inner workings of the program you just completed
+-- 		*goto: https://guidedtrack-stage.herokuapp.com/programs/22109c9/preview
+	
+--Figure out how to embed the signup within this program so afterwards I can 
+
+
+
+

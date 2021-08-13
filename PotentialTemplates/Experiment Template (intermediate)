@@ -1,0 +1,125 @@
+--{Randomized Experiment Template (intermediate)}
+
+*header: Does counting sheep help to fall asleep?
+
+Welcome to the experiment.
+
+By clicking the button below, you are agreeing to our [Terms of Service|http://www.gimbeltech.com/documents/terms_of_service.html]
+
+*button: Begin
+
+*question: Where do you live?
+
+*question: What’s your age?
+	*type: number
+
+*question: To which gender identity do you identify?
+	Male
+	Female
+	Other
+		*question: Please, specify:
+	Prefer not to say
+
+--This is just a more concise way to write a multiple choice question.
+-->>symptomsInsomnia saves the possible responses to to a collection.
+>> symptomsInsomnia = ["Difficulty falling asleep at night", "Waking up during the night", "Waking up too early", "Not feeling well-rested"]
+*question: Which symptoms of insomnia do you experience?
+	*answers: symptomsInsomnia
+	--*answers calls the symptomsInsomnia
+	--If you ask a question with the same answers repeatedly, then you might want to do this!
+		
+
+
+--The keyword *randomize is used to randomly display one of the two sentences below it.
+*randomize
+	All done with this section.
+	This section is now complete. 
+
+Now you’ll take the _Brief Sleepiness Assessment_.
+
+*button: Next
+
+*maintain: Please answer honestly
+--maintain will keep the text following it on the screen until you see *clear
+
+--We're scoring the participants respons in pre_fastToSleep, which takes different values depending on the answer to this question.
+*question: How long do you think it would take you to fall asleep right now?
+	0 seconds
+		>>pre_fastToSleep = 1 
+	A few minutes
+		>>pre_fastToSleep = 0.5
+	There's no way I can go to sleep now!
+		>>pre_fastToSleep = 0
+	
+*question: How relaxed so you feel right now?
+	I feel totally relaxed
+		>>pre_relaxed = 1
+	I could use some unwinding!
+		>>pre_relaxed = 0.5
+	I'm totally wired...
+		>>pre_relaxed = 0
+
+--preInterventionSleepiness is a measure of how sleepy a user is before the intervention. 
+>>preInterventionSleepiness = pre_fastToSleep + pre_relaxed
+--We're going to compare this to postInterventionSleepiness, which we'll gather after the intervention under the *experiment
+	
+
+*clear
+--The *clear keyword will clear the maintained text (e.g. “Please answer honestly”). 
+
+Thank you!.
+
+_You’ll now be assigned to one of two interventions_.
+*button: Next
+
+
+--The *experiment keyword operates just like *randomize, except it keeps group numbers balanced.
+*experiment: SleepinessIntervention
+	*group: A
+	
+		>>interventionName = "COUNTING SHEEP"
+
+		You have been assigned the intervention {interventionName}:	
+		Right now, and for the next 10 seconds, Just count sheep!
+	
+		*image: http://1205271019.rsc.cdn77.org/images/guidedtrack/sheep.png
+			*caption: one, two, three, ...
+		
+		--The *wait keyword pauses the program for the specified amount of time. 
+		*wait:  10.seconds
+	
+	*group: B
+	
+		>>interventionName = "RELAXING SCENE"
+		
+		You have been assigned the intervention {interventionName}:	
+		*image: http://1205271019.rsc.cdn77.org/images/guidedtrack/Sunset-1154926563.png
+		Picture yourself sitting at the beach and watching a sunset over the ocean. 
+		
+		*wait: 10.seconds	
+
+Thanks! Now we’ll give you the Brief Sleepiness assessment again.
+
+*button: Next
+
+*question: How long do you think it would take you to fall asleep right now?
+	0 seconds
+		>>post_fastToSleep = 1 
+	A few minutes
+		>>post_fastToSleep = 0.5
+	There's no way I can go to sleep now!
+		>>post_fastToSleep = 0
+	
+--This is simply another way to generate the same sort of multiple choice questions you see above. Don't think too hard about it, just know this is an available way to assign points to collections of answers.
+--You might want to do this if you were giving someone a personality scale, every question was a scale from agree to disagree, and you wanted them all to  have the same scoring
+>>questionTwoAnswers = [["I feel totally relaxed", 1],["I could use some unwinding!", 0.5],["I'm totally wired...", 0]]	
+*question: How relaxed so you feel right now?
+	*answers: questionTwoAnswers
+	*save: post_relaxed
+
+--preInterventionSleepiness is a measure of how sleepy a user is before the intervention. 
+>>postInterventionSleepiness = post_fastToSleep + post_relaxed
+
+Wow! Check this out: your overall sleepiness before the intervention was {preInterventionSleepiness} and now it is {postInterventionSleepiness}!
+
+Thank you. That’s the end of this *extremely scientific* experiment.

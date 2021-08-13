@@ -1,0 +1,101 @@
+--{Draft with Associations}
+
+--Here I'm just trying to figure out how to 
+	--save a summary as your whole entry with date and time
+	--Be able to scroll through past entries
+	
+>> tenPointScale = [0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10]
+>> emotionList = []
+>> likertScale = ["Very bad", "Bad", "Neutral", "Good", "Very good"]
+
+
+--Create an account only if you want to be able to scroll through your past responses
+--*login
+*label: beginning
+
+
+--*component
+--	Track mood
+--	*click
+*page	
+	*question: What is your current physiological arousal?
+		*save: currentArousal
+		*type: slider
+		*answers: tenPointScale
+	*question: What is the valence of your emotion?
+		*save: currentValence
+		*type: slider
+		*answers: likertScale
+	*question: What is your current energy level?
+		*save: currentEnergy
+		*type: slider
+		*answers: tenPointScale
+	*question: Describe what you were doing
+		*save: whatDoing
+		*blank
+		*tip: optional
+	*question: Describe what you were about to do
+		*blank
+		*tip: optional
+		*save: whatAboutToDo
+	*question: Describe anything else you want to capture about the context that might be influencing your emotions
+		*blank
+		*tip: optional
+		*save: context
+	*question: How would you like to label your current emotion?
+		*save: emotionLabel
+-->> emotionLabel = {calendar::now -> emotionLabel}
+-->> emotionList.add(emotionLabel)
+-->> emotionList = emotionList.unique
+>>thisDate = calendar::date
+>>thisTime = calendar::time
+
+Sending data to google sheets…
+
+*service: zapier
+	*path: /
+	*method: post
+	*send: {"Date"->thisDate, "Time"->thisTime, "Arousal"->currentArousal, "Valence"->currentValence, "Energy"->currentEnergy, "What doing" -> whatDoing, "What about to do" -> whatAboutToDo, "Context" -> context, "Emotion label" -> emotionLabel}
+	*success
+		Success!
+		>> result = it
+	*error
+		Failure!
+		>> result = it
+
+*Response from zapier server*: {result}
+
+*question: Write another entry?
+	Yes
+		*goto: beginning
+	No
+
+*button: Done!
+
+
+
+-->> todayEntry = {thisMoment -> [currentArousal, currentValence, currentEnergy, whatDoing, whatAboutToDo, context]}
+-->> entryList = []
+-->> entryList.add(thisMoment)
+	--save a summary as your whole entry with date and time
+	--Be able to scroll through past entries
+	
+--*email
+--	to: roberth
+
+--I think that if I want to have a long scrollable list, I need to do a while loop
+	--Maybe I need to just log each one as "1, 2, 3, 4, 5, 6..." if I want to do this
+		--I'm gonna have to do it this way, and do it with an association where the component can call, say, thisMoment for 1 with the keys for it.
+--*component
+--	Entry for {thisMoment}:
+--	You are experiencing *{currentArousal} arousal,* *{currentEnergy} energy,* with a *{currentValence} valence.*
+--	You labeled this emotion: {emotionLabel}
+--	*if: whatDoing
+--		*You were doing:* {whatDoing}
+--	*if: whatAboutToDo
+--		You were about to do: {whatAboutToDo}
+--	*if: context
+--		*Relevant contextual factors to your emotions include:* {context}
+		
+--I also want to make this show me all of the emotions I've added and the number of times I've had each.
+

@@ -1,0 +1,230 @@
+--{Interactive Fiction TF Label all of the numbers and just use goto and label}
+
+*label: Beginning
+
+*image: https://images.typeform.com/images/7VUfRmxyNXVQ/image/default
+Program by Terence Eden
+https://twitter.com/edent
+
+--In this template, all of the questions have labels. This is by no means required, but it makes it easy to have a flow with skip logic.
+--For example, "*goto: 5" will take the participant from wherever they are to where you see *label: 5
+*label: 1
+*question: They're here. Oh God! They've found you!
+	Run
+		--indenting *picture under a multiple choice question response will give the response an image
+		*picture: https://images.typeform.com/images/fbGc73wzzkvH/image/default
+		--Answering "Run" just moves you on to the next question down in this program
+	Hide
+		*picture: https://images.typeform.com/images/h7zbF7tXrAF6/image/default
+		*goto: 4
+		--If you select "Hide" then the *goto means you jump to *label: 4
+
+*label: 2
+*question: Their vision is based on movement, they give chase.
+	Keep running
+		--Here we don't need to *goto anywhere, because it will just automatically move to the next question down in the program.
+		--If you wanted, you could put *goto here anyway. If you did, you could use [[Mac, CTRL+F] [PC, CTRL+F]] to search for a label's value to quickly see how you got there and where you're going.
+	Give in
+		*goto: C
+		
+*label: 3
+*question: They're fast, too fast. They're catching up.
+	Turn and fight
+		*goto: E
+	Hide	
+
+	
+*label: 4
+*question: There's a pile of rubble you can squeeze under. A metal object glints faintly. 
+	Examine
+		*goto: D
+	Stay hidden
+
+*label: 5			
+*question: Your heart beats so loudly, you're sure they'll hear. An hour passes.
+	Wait
+	Look around
+		*goto: 7
+
+*label: 6
+*question: Suddenly you jerk awake! How much time has passed? It is night.
+	Stay hidden
+		*goto: F
+	Leave
+
+*label: 7	
+*question: They've gone. Slowly, you creep out. Blood is smeared on the streets. You are tired.
+	Give in
+		*goto: 12
+	Weep
+		*goto: 10
+
+*label: 8
+*question: Pitch black night. No moon. No stars. 
+	Switch on torch
+		*goto: G
+	Call out for help
+		*goto: 10
+
+*label: 9
+*question: Nothing left to lose! You cry out. Your voice echoes but there is no answer.
+	Switch on torch
+		*goto: G
+	Weep
+
+*label: 10
+*question: Tears stream down your cheeks. You're utterly alone. Are you the last one left?
+	Give in
+		*goto: 12
+	Carry on
+		*goto: 11
+
+*label: 11
+*question: Devoid of energy, you stumble down one dark alley after another. Everything is miserable. You come across a door slightly ajar.
+	Go inside
+		*goto: J
+	Keep walking
+		*goto: 14
+
+*label: 12
+*question: Death will not find you. They *enjoy* the chase. With a last burst of energy, you run. You hear them shift. Their claws scrape the ground. You trip.
+	Get up
+	Surrender	
+		*goto: c
+	
+*label: 13
+*question: The creature chasing you is... young! Its teeth look brittle.
+	Fight
+		*goto: H
+	Reason with it
+		*goto: 15
+	
+*label: 14
+*question: You turn down a street just as desolate as the others. Immediate regret. The creature stares at you without blinking.
+	Punch it in the mouth
+		*goto: H
+	Try to reason with it
+		*goto: 15
+	
+*label: 15
+*question: "Why?" you scream, "Why?". It pauses, then replies. "Because you deserve it."
+	You do
+		*goto: I
+	You don't
+	
+*label: 16
+*question: It won't listen to your lies. It slithers closer. 
+	Fight
+		*goto: H
+	Plead
+		*goto: B
+
+*label: A
+Too scary for you? There's no glory in quitting...
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: B
+It feasts on your tears. Its foul breath fills you with corruption. You deserve this. You truly do for your wicked life.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: C
+They show you no mercy. The pain is indescribable.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+
+*label: D
+All that glisters is not gold. The detonation rips you in half. 
+They feast on your remains.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: E
+You fool! They quickly overpower you. Your end is neither swift nor dignified. Your mangled corpse serves as a warning to others.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: F
+The night is bitterly cold. In the morning, they find your frozen body. 
+They snap your fingers off for fun.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: G
+The battery stutters into life. 
+A weak light illuminates their bared fangs. 
+Your screams are quickly drowned out.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+
+*label: H
+You punch the creature in the mouth. Screaming, it runs. You pull a fang from your fist. The poison overwhelms you. 
+Unending pain.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: I
+You sigh, "I know." There is a pause. 
+It fades into the night. You're left alone. Alone. 
+You have to live with your shame.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: J
+A foul-smelling torrent of hot air slams the door shut behind you.
+Their pitiless yellow eyes are the last thing you see.
+
+*question: Try again?
+	Yes
+		*goto: Beginning
+	No
+		*goto: End
+
+*label: End
+*header: Thank you for playing!
+*image: https://i.redd.it/6lwozcqh3u211.jpg

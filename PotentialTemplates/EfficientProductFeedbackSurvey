@@ -1,0 +1,84 @@
+--{EfficientProductFeedbackSurvey}
+
+*settings
+	*back: yes
+	*menu: no
+
+*question: Let's get going. When you first used the product, what was *your overall impression of it?*
+	*save: overallImpression
+	Really positive
+	Positive
+	It was alright
+	Negative
+	Really negative
+	
+*if: overallImpression = "Really positive" or overallImpression = "Positive"
+	*question: Sweet. What do you like most about it?
+		*tip: Don't think, just write!
+		*type: paragraph
+	*question: And what do you think could still be *improved?*
+		*type: paragraph
+	
+*if: overallImpression = "It was alright" or overallImpression = "Negative" or overallImpression = "Really negative"
+	*question: Thank you for your honesty. *What would have to change in order for you to have a good user experience?*
+	
+*question: *Overall quality* -- How would you rate the product?
+	*type: slider
+	*tip: 1 means terrible, 5 means fantastic
+	1
+	2
+	3
+	4
+	5
+	
+--huh, maybe I don't want to have to type 1 2 3 4 5 every time! If I have those repeatedly, I can do this
+>> rating5 = [1, 2, 3, 4, 5]
+--establish a collection, and set *answers to "rating5"
+*question: *question: *Overall quality* -- How would you rate the product?
+	*type: slider
+	*tip: 1 means terrible, 5 means fantastic
+	*answers: rating5
+
+*question: And how innovative is the product?
+	*tip: (Interpret 'innovative' however you want)
+	*type: slider
+	*answers: rating5
+	
+*question: Total honesty -- how much do you *need* the product?
+	Definitely need it
+	Kind of need it
+	Don't really need it
+	Definitely don't need it
+	
+*question: How would you rate its value for money?
+	*tip:	1 means money down the drain, 5 means totally worth it
+	*type: slider
+	*answers: rating5
+	
+*question: *If you could buy the product today,* would you?
+	Absolutely
+	Let me think about it
+	Don't think so
+	Wouldn't dream of it
+
+>> rating10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+*question: How likely are you to *replace* your current solution with this product?
+	*type: slider
+	*before: Not at all likely
+	*after: Extremely likely
+	*answers: rating10
+
+*question: How likely are you to recommend this product to someone you know?
+	*type: slider
+	*before: Not at all likely
+	*after: Extremely likely
+	*answers: rating10
+	*save: NPS
+
+*if: NPS < 7
+	*question: Got it. What's the main reason you wouldn't recommend it?
+
+*if: NPS >= 7
+	*question: {NPS}, great. What's the main reason you would recommend it?
+
+*header: We're done! Big thanks.

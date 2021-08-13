@@ -1,0 +1,63 @@
+--{}
+
+*label: Looping a question for each response to a previous question
+*question: As a researcher, what do you want to do?
+	*save: userGoal
+	*type: checkbox
+	Write a survey
+	Design an experiment
+	Collect data online
+	Deploy an intervention
+	Write an interactive quiz
+	Create a psychometric scale
+	Provide digital instruction
+
+>> index = 1	
+*while: index <= userGoal.size
+	*question: What were you doing for {userGoal[index]} before?
+	>> index = index + 1
+
+*label: Giving a user multiple tries at the same question
+
+--this version gives you as many chances as you need to get it right
+*label: q1wrong
+*question: 1) Which of the following is not one of our favorite smoothie ingredients?
+	Kale
+		*points: 0
+		Kale was incorrect! Try again.
+		*goto: q1wrong
+			--This is going to give the learner another chance at success!
+			--This will *goto the *label q1wrong
+	Honey
+		*points: 0
+		Honey was incorrect! Try again.
+		*goto: q1wrong
+	Fruit
+		*points: 0
+		Kale was incorrect! Try again.
+		*goto: q1wrong
+	Ice
+		*points: 500
+		That’s correct, we never listed ice as one of our favorites, though you could certainly add it if you like.
+
+>> index = 1
+*while: index <= 2
+	*if: index < 3 and index > 1
+		That was incorrect! Try again.
+	*question: 1) Which of the following is not one of our favorite smoothie ingredients?
+		*tip: You have two tries
+		Kale
+			*points: 0
+			>> index = index + 1
+		Honey
+			*points: 0
+			>> index = index + 1
+		Fruit
+			*points: 0
+			>> index = index + 1
+			
+		Ice
+			*points: 500
+			That’s correct, we never listed ice as one of our favorites, though you could certainly add it if you like.
+			>> index = 3
+		
