@@ -1,7 +1,7 @@
 --{EmailSignupTemplate}
 --All of the questions indented beneath *page are on the same page
 *page
-	*header: Subscribe to my newsletter
+	*header: Contact me
 	--We're saving the person's name and email as variables so we can use it later to actually send them an email.
 	*question: What's your *first* name?
 		*save: firstName
@@ -25,9 +25,9 @@ We're glad to have you here.
 		--you can indent questions underneath answers to ask a follow-up question. This one is free response.
 		*question: How did you hear about my business?
 
-*question: Why are you subscribing to this newsletter?
+*question: Why are you contacting me?
 	*type: paragraph
-	*save: whySubscribe
+	*save: whyContact
 
 
 *header: Thank you! I will respond to your inquiry soon.
@@ -40,22 +40,14 @@ We're glad to have you here.
 		Hello {firstName} {lastName},
 		Thank you contacting my business! I will respond to you as soon as I can.
 		You subscribed because: 
-		{whySubscribe}
+		{whyContact}
 
-
---OPTIONAL: Below is some extra stuff you can try out! You can send yourself a confirmation email, and you can add the respondent to a Mailchimp email list.
-
---OPTIONAL: send yourself a confirmation email
---place your email address between the quotes and uncomment the email code below by removing the double dashes.
--->> yourEmail = ""
---*email
-	--*subject: (NOTIFICATION) New signup
-	--*to: yourEmail
-	--*body
-		--You have a new subscriber! 
-		--Their name is {firstName} {lastName}
-		--They subscribed to you because: {whySubscribe}
+--Send yourself an email with the respondent's question
+--Replace the email between quotes with your own email
+*email
+	*subject: (NOTIFICATION) New contact
+	*to: "myemail@example.com"
+	*body
+		{firstName} {lastName} reached out to you!
+		They contacted you because: {whyContact}
 		
-
---OPTIONAL: Add to mailchimp list		
--- use the search bar to look for "mailchimp – add new email – public" and follow the instructions here http://blog.guidedtrack.com/?p=186
