@@ -1,12 +1,22 @@
 --{Onboarding Questionnaire}
+--TODO: All of the testimonials that I have within *component will become pictures
 *settings
 	*back: yes
 	
+*header: Welcome to your first GuidedTrack program! Let's get to know each other 😃
+
+This program was made in GuidedTrack. While you're telling us about yourself, we will show you the underlying code. Don't worry - you don't need any prior coding experience to understand what's going on! */GuidedTrack is built to be easy to read and write./*
+
+Your answers will help us make GuidedTrack better for you.
+
+*button: See how it works
+--TODO this button should trigger an event that switches the user to the Split view
+--
+*progress: 20%
 *header: Let's get to know each other
 
-One of GuidedTrack's greatest strengths is in the choose-your-own-adventure like control you have over how your program flows. /Short of a full-blown programming language like JavaScript or Python, no alternative gives you the same flexibility./
+One of GuidedTrack's greatest strengths is in the choose-your-own-adventure like control you have over how your program flows. Short of a full-blown programming language like JavaScript or Python, no alternative gives you the same flexibility.
 
-Your answer to the following question will determine the testimonials and follow-up questions we show you.
 
 *question: What role best describes you?
 	*save: userRole
@@ -16,24 +26,11 @@ Your answer to the following question will determine the testimonials and follow
 	Educator or trainer
 	Other
 
->> userGoal = []
+*progress: 40%
+
+--Here we are using *if to make it so if you answered that you were a researcher on the previous question
 *if: userRole = "Researcher or scientist"
-	--We would put some social proof/testimonials here. Right now I'm waiting on our push for testimonials. We need tweet length testimonials.
-	*header: GuidedTrack will grow with your career. Run any online study you want.
-	*component
-		*GuidedTrack is an ideal platform for social scientists who collect data online.* It offers a flexibility and efficiency that I have not encountered in any other survey platforms. *That said, you definitely don’t need any background in programming!*
-		/-Alexa H, PhD Candidate/
-	*component
-		*I ran all my studies for my PhD using GuidedTrack, and it really helped me to do so quickly and easily.* The language is intuitive and quick to learn, with clear instructions in the toolbar and help guide - so *it's easy to get started and learn as you go.* If I had any difficulties using the platform, I got a fast and helpful response to my questions.
-		/-Jess W, Social Science Researcher/
-	*component
-		Inexpensive, easy to learn how to do it. *In my first experiment using Guided Track,* I time planned for one week to convert my survey mockup into a fully coded + properly designed survey, with appropriate randomisation etc. *It took me one morning!*
-		/- Jamie Harris, researcher/
-	
-	*button: Next
-	
 	*question: What do you want to do?
-		*save: userGoal
 		*type: checkbox
 		Write a survey
 		Design an experiment
@@ -43,8 +40,37 @@ Your answer to the following question will determine the testimonials and follow
 		Create a psychometric scale
 		Provide digital instruction
 
-*if: userRole = "Educator or trainer"
+	*progress: 60%
+	*header: GuidedTrack will grow with your career. Run any online study you want.
+	
+	--The *component just adds a box around each of the testimonials so it looks a bit nicer. 
+	--If you get rid of the *component and unindent it (shift+tab while your cursor is on the line), you'll just see normal text
+	--You will also see some nice text formatting.
+	--TODO Replace all testimonial components with graphics that have the testimonial and image of the person.
+	*component
+		*GuidedTrack is an ideal platform for social scientists who collect data online.* It offers a flexibility and efficiency that I have not encountered in any other survey platforms. *That said, you definitely don’t need any background in programming!*
+		/-Alexa H, PhD Candidate/
+	*component
+		*I ran all my studies for my PhD using GuidedTrack, and it really helped me to do so quickly and easily.* The language is intuitive and quick to learn, with clear instructions in the toolbar and help guide - so *it's easy to get started and learn as you go.* If I had any difficulties using the platform, I got a fast and helpful response to my questions.
+		/-Jess W, Social Science Researcher/
+	*component
+		Inexpensive, easy to learn how to do it. *In my first experiment using Guided Track,* I time planned for one week to convert my survey mockup into a fully coded + properly designed survey, with appropriate randomisation etc. *It took me one morning!*
+		/- Jamie Harris, researcher/
+	*button: Next
 
+*if: userRole = "Educator or trainer"
+	*question: What do you want to do?
+		*type: checkbox
+		Create an interactive web presentation
+		Write a self-grading quiz
+		Build an interactive lesson
+		Automatically send an email follow-up after lesson or homework completion
+		Show learners their results in charts
+		Create an online course
+		Create a feedback form
+
+	*progress: 60%
+	
 	*header: Educators can create the courses and lessons they dreamed of
 
 	*component	
@@ -59,28 +85,28 @@ Your answer to the following question will determine the testimonials and follow
 	
 	*button: Next
 	
-	*question: What do you want to do?
-		*save: userGoal
-		*type: checkbox
-		Create an interactive web presentation
-		Write a self-grading quiz
-		Build an interactive lesson
-		Automatically send an email follow-up after lesson or homework completion
-		Show learners their results in charts
-		Create an online course
-		Create a feedback form
-		
 *if: userRole = "Business process creator or manager"
 	*question: What do you want to do?
-		*save: userGoal
 		*type: checkbox
 		Build a job application workflow
 		Connect a few services you're familiar with through an API
 		Create a consistent decision procedure
 		Create an interview scheduler
+
+	
+	*progress: 60%
 	
 *if: userRole = "Entrepreneur or online product creator"
-
+	*question: What do you want to do?
+		*type: checkbox
+		Write an onboarding flow
+		Build an app prototype
+		Build a custom interface
+		Write a feedback survey
+		Build an interactive lesson
+		Validate demand for an idea
+		
+	*progress: 60%
 	*header: Entrepreneurs build it themselves, quick and inexpensive
 	*component
 		"GuidedTrack is a transformative tool for early-stage ventures! *It's perfect for quickly/cheaply prototyping and iterating new products.* I think of it as the Wordpress for apps – *you no longer need any coding experience to build your own apps,* with access to powerful programming abilities."
@@ -90,20 +116,21 @@ Your answer to the following question will determine the testimonials and follow
 		/- Raffi Grinberg, Founder of DollarsEd/
 		
 	*button: Next
-	
-	*question: What do you want to do?
-		*save: userGoal
-		*type: checkbox
-		Write an onboarding flow
-		Build an app prototype
-		Build a custom interface
-		Write a feedback survey
-		Build an interactive lesson
-		Validate demand for an idea
 		
 *if: userRole = "Other"
-	--TODO
-	GuidedTrack can build just about any choose-your-own-adventure flow of pages.
+	*question: What do you want to do?
+		*type: checkbox
+		Write a survey
+		Write a research study
+		Create an interactive lesson
+		Design a consistent decision procedure
+		Create tracker apps and personal tools
+		Write choose-your-own-adventure forms and stories
+
+	
+	*progress: 60%
+	
+	*header: GuidedTrack can build just about any choose-your-own-adventure flow of pages.
 	
 	*component
 		"I absolutely love GuidedTrack. I built DollarsEd, a financial education course for twenty-something year-olds. *I created my first prototype lesson in GuidedTrack in half an hour, then the next one, until eventually the entire app was done.* I started simple and added bells and whistles later."
@@ -118,33 +145,35 @@ Your answer to the following question will determine the testimonials and follow
 		/-Alexa H, PhD Candidate/
 	
 	*button: Next
-	
-	*question: What do you want to do?
-		*type: checkbox
-		Write a survey
-		Write a research study
-		Create an interactive lesson
-		Design a consistent decision procedure
-		Create tracker apps and personal tools
-		Write choose-your-own-adventure forms and stories
 
-It is easy to get started with GuidedTrack and you can learn as you go. Things may start out slower than you're used to in other apps, but as you gain familiarity, you'll be able to write a program as fast as you can type. /No app that requires you to click and drag a million little things can beat that speed of creation./
 
-In a minute, we are going to send you into a basic program you can edit that will teach you all you need to get started.
+*progress: 80%
+-- Screen could have image, or almost nothing on it, maybe useless
+--TODO Insert video here
+
+Here are the basics of GuidedTrack, in action. You can access this video and more at any point on our youtube channel.
+
+
 
 *button: Next
 
+*progress: 100%
 
+When you are ready to get started, click next.
 
-From there, you'll have complete freedom. Whenever you have questions about how to do something, you can learn from:
+As you make your first program, this is the best way you will learn as you go:
 *list: expandable
 	Creating your program from the toolbar
+		The toolbar, which you'll see to the left, is going to be one of your main tools to get started.
 		*image: https://1092980442.rsc.cdn77.org/Basics-Section-Toolbar.png
 		*image: https://1092980442.rsc.cdn77.org/Question-Basics-Toolbar.png
-	Referring to our help docs
-		*image: https://1092980442.rsc.cdn77.org/help-docs.png
 	Playing with examples in templates
-		
+		*component
+			*header: Click Here
+			*click
+				*goto: https://guidedtrack-stage.herokuapp.com/programs/new
+	Referring to our help docs
+		*image: https://1092980442.rsc.cdn77.org/help-docs.png		
 	Talking with other users in our slack group
 		Ask questions, show-and-tell, and help others! Talk with the team and other users.
 		*component
@@ -154,4 +183,4 @@ From there, you'll have complete freedom. Whenever you have questions about how 
 
 
 *button: Finish
---Link to the How GuidedTrack Works program
+--TODO Link to the sign up screen and then take them to the screen that lets them choose between templates or the "How GuidedTrack Works" program.

@@ -50,4 +50,3 @@ We're glad to have you here.
 	*body
 		{firstName} {lastName} reached out to you!
 		They contacted you because: {whyContact}
-		
