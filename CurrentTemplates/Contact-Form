@@ -32,7 +32,7 @@ We're glad to have you here.
 
 *header: Thank you! I will respond to your inquiry soon.
 
---This is actually going to send an email! Try it out. If you go to Settings>Branding then you can change your email display name.
+--When published or in Preview mode, this will actually send an email! Try it out. If you go to Settings>Branding then you can change your email display name.
 *email
 	*subject: (CONFIRMATION) Inquiry received
 	*to: {email}
@@ -43,10 +43,10 @@ We're glad to have you here.
 		{whyContact}
 
 --Send yourself an email with the respondent's question
---Replace the email between quotes with your own email
+--Replace the email after *to with your own email
 *email
 	*subject: (NOTIFICATION) New contact
-	*to: "myemail@example.com"
+	*to: myemail@example.com
 	*body
 		{firstName} {lastName} reached out to you!
 		They contacted you because: {whyContact}
