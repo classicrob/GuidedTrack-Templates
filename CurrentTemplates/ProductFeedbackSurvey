@@ -72,7 +72,7 @@
 	*question: Got it. Why wouldn't you recommend it?
 
 *if: recommendationLikelihood >= 7
-	*question: {NPS}, great! Are you willing write a testimonial for us to share on our website?
+	*question: {recommendationLikelihood}, great! Are you willing write a testimonial for us to share on our website?
 		Yes
 			Thank you!
 			
